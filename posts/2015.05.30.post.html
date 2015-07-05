@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PiScan: an open-source version of the Amazon Dash Button using a Raspberry Pi">
+    <meta name="author" content="Denis Papathanasiou">
+    <title>PiScan</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link href="../css/my-blog.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+      <li class="sidebar-brand"><a href="/" onclick = $("#menu-close").click(); >Denis Papathanasiou</a></li>
+      <li class="sidebar-brand"><a href="aikido.html" onclick = $("#menu-close").click(); >aikido</a></li>
+      <li class="sidebar-brand"><a href="hardware.html" onclick = $("#menu-close").click(); >hardware</a></li>
+      <li class="sidebar-brand"><a href="programming.html" onclick = $("#menu-close").click(); >programming</a></li>
+      <li class="sidebar-brand"><a href="random.html" onclick = $("#menu-close").click(); >random</a></li>
+      <li class="sidebar-brand"><a href="technology.html" onclick = $("#menu-close").click(); >technology</a></li>
+      <li class="sidebar-brand"><a href="#contacts" onclick = $("#menu-close").click(); >contact</a></li>
+    </ul>
+  </nav>
+
+
+  <header class="intro-header" style="background-image: url('../img/posts/barcode.jpg')"> <!-- source: https://commons.wikimedia.org/wiki/File:Barcode_%282409057265%29.jpg -->
+    <div class="container">
+      <div class="row">
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <div class="site-heading">
+	    <h1>PiScan</h1>
+	    <hr class="small">
+	    <h2 class="subheading">An open-source version of the Amazon Dash Button using a Raspberry Pi</h2>
+	    <p class="post-meta"><i class="fa fa-calendar"></i> May 30, 2015</p>
+
+	  </div>
+	</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	
+<p><a href="http://imgur.com/a/dXNYW" target="_blank">PiScan</a> is an open-source version of the <a href="https://www.youtube.com/watch?v=NMacTuHPWFI">Amazon Dash Button</a> using a <a href="http://www.raspberrypi.org/">Raspberry Pi</a> and an off the shelf usb barcode scanner.</p>
+
+<p>Before Amazon's announcement (which, because of the timing on March 31, led some people to <a href="http://www.adweek.com/news/technology/marketers-debuting-amazon-dash-right-april-fools-day-was-genius-163788">think erroneously that it was an April Fools Joke</a>), I had been working on an open-source barcode scanner.</p>
+
+<p>I was inspired by github user <a href="https://github.com/danslimmon">danslimmon's</a> <a href="https://www.youtube.com/watch?v=9_MNOOgFDg4">oscar project</a>.</p>
+
+<p>Rather than be content with an SMS shopping list, I thought I could map the scan results to an online vendor's API, to enable scan-to-shop, a.k.a., lazy man's shopping.</p>
+<p><blockquote class="imgur-embed-pub" lang="en" data-id="a/dXNYW"><a href="//imgur.com/a/dXNYW">PiScan Gallery on Imgur</a></blockquote></p>
+<p><script src="//s.imgur.com/min/embed.js" async="" charset="utf-8"></script></p>
+
+<p><a href="http://www.theverge.com/2015/3/31/8316775/amazon-dash-buttons-turn-homes-into-shopping-carts">Unlike the Dash button</a>, you can pick any product, it would give you an opportunity to say no based on the price before ordering.</p>
+
+<p>So far, the <a href="https://github.com/Banrai/PiScan/tree/master/server/commerce/amazon">only vendor is Amazon</a> (ironically enough) but I'm keen to add more, especially since Tesco in both the UK and Korea supposedly offer similar APIs, and there are probably other vendors out there that I'm not aware of.</p>
+<p><h3 id="contributing-to-open-product-data">Contributing to Open Product Data</h3></p>
+<p>Somewhat surprisingly, there is <a href="https://kyleconroy.com/open-barcode-database">no good source of free barcode data</a>.</p>
+
+<p>The <a href="http://www.product-open-data.com/">Open Product Data (POD) project</a> is a promising start, but its catalog is limited, and they haven't published an update since early 2014.</p>
+
+<p>Using PiScan is way of Contributing your individual scans and inputs back to POD, through another open data project I'm running at <a href="http://saruzai.com/">Saruzai.com</a>.</p>
+
+<p>But that's optional, you can use PiScan and just <a href="https://github.com/Banrai/PiScan/blob/master/server/README.md">run your own server</a> instead, which keeps your scanning history and collections private.</p>
+<p><h3 id="build-your-own">Build Your Own</h3></p>
+<p>The software is available on github: <a href="https://github.com/Banrai/PiScan" target="_blank">https://github.com/Banrai/PiScan</a></p>
+
+<p>The hardware is relatively straight-forward, with just a few things to buy, and no soldering or wiring required.</p>
+
+<p>This parts list has two links for each item, the first is an affiliate link, which is a small way of supporting me to continue this work, along with a non-affiliate version underneath.</p>
+
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B009SQQF9C/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B009SQQF9C&amp;linkCode=as2&amp;tag=denispapath-20&amp;linkId=6VXFZWFEEFXVJR27">Raspberry Pi Model B</a><img style="border: none !important; margin: 0px !important;" src="http://ir-na.amazon-adsystem.com/e/ir?t=denispapath-20&amp;l=as2&amp;o=1&amp;a=B009SQQF9C" alt="" width="1" height="1" border="0" /><br />
+<a href="http://www.amazon.com/gp/product/B009SQQF9C" target="_blank">http://www.amazon.com/gp/product/B009SQQF9C</a></li>
+</ul>
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B00GPH83VK/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00GPH83VK&amp;linkCode=as2&amp;tag=denispapath-20&amp;linkId=NYLGF5PO5SGMZV4S">USB Laser Scan Barcode Scanner</a><img style="border: none !important; margin: 0px !important;" src="http://ir-na.amazon-adsystem.com/e/ir?t=denispapath-20&amp;l=as2&amp;o=1&amp;a=B00GPH83VK" alt="" width="1" height="1" border="0" /><br />
+<a href="http://www.amazon.com/gp/product/B00GPH83VK" target="_blank">http://www.amazon.com/gp/product/B00GPH83VK</a></li>
+</ul>
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B00IVPU7KE/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00IVPU7KE&amp;linkCode=as2&amp;tag=denispapath-20&amp;linkId=EZW4LKENMBRZOIYR">Micro SDHC with Adapter 16GB</a><img style="border: none !important; margin: 0px !important;" src="http://ir-na.amazon-adsystem.com/e/ir?t=denispapath-20&amp;l=as2&amp;o=1&amp;a=B00IVPU7KE" alt="" width="1" height="1" border="0" /><br />
+<a href="http://www.amazon.com/gp/product/B00IVPU7KE" target="_blank">http://www.amazon.com/gp/product/B00IVPU7KE</a></li>
+</ul>
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B00DYQYJ3Q/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00DYQYJ3Q&amp;linkCode=as2&amp;tag=denispapath-20&amp;linkId=72MBKOF2DO7HBO5Y">USB 2.0 Data Drive 8GB</a><img style="border: none !important; margin: 0px !important;" src="http://ir-na.amazon-adsystem.com/e/ir?t=denispapath-20&amp;l=as2&amp;o=1&amp;a=B00DYQYJ3Q" alt="" width="1" height="1" border="0" /><br />
+<a href="http://www.amazon.com/gp/product/B00DYQYJ3Q" target="_blank">http://www.amazon.com/gp/product/B00DYQYJ3Q</a></li>
+</ul>
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B00FWMEFES/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00FWMEFES&amp;linkCode=as2&amp;tag=denispapath-20&amp;linkId=SCFCF3GDICSWXAR5">Raspberry Pi Wifi Dongle Adapter</a><img style="border: none !important; margin: 0px !important;" src="http://ir-na.amazon-adsystem.com/e/ir?t=denispapath-20&amp;l=as2&amp;o=1&amp;a=B00FWMEFES" alt="" width="1" height="1" border="0" /> (optional: the Pi runs a webserver, which I connect to over my local network)<br />
+<a href="http://www.amazon.com/gp/product/B00FWMEFES" target="_blank">http://www.amazon.com/gp/product/B00FWMEFES</a></li>
+</ul>
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B00LSEOTYK/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00LSEOTYK&amp;linkCode=as2&amp;tag=denispapath-20&amp;linkId=QDJASUQH25M3SG2A">Raspberry Pi B+ Power Supply (5v 2A) &#8211; USA</a><img style="border: none !important; margin: 0px !important;" src="http://ir-na.amazon-adsystem.com/e/ir?t=denispapath-20&amp;l=as2&amp;o=1&amp;a=B00LSEOTYK" alt="" width="1" height="1" border="0" /> (optional: I like a dedicated power supply since I&#8217;ve mounted mine to the wall)<br />
+<a href="http://www.amazon.com/gp/product/B00LSEOTYK" target="_blank">http://www.amazon.com/gp/product/B00LSEOTYK</a></li>
+</ul>
+
+	
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+	<a name="contacts"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <ul class="list-inline text-center">
+	    <li>
+	      <a href="mailto:denis@papathanasiou.org">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	    <li>
+	      <a href="https://github.com/dpapathanasiou">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	  </ul>
+	</div>
+      </div>
+      <div class="row">
+	<a name="license"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <p class="copyright text-muted">
+	    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> &nbsp;
+	    This site's content is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons (BY-NC-SA 4.0)</a>
+	  </p>
+	</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="../js/my-blog.min.js"></script>
+  
+</body>
+</html>
+
+
