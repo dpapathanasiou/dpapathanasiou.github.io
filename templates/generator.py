@@ -99,25 +99,39 @@ templates = {}
 for template_type, template_file in template_files.items():
     templates[template_type] = Template(load_text_file(template_file))
 
-def generate_post (page_title, page_subtitle, page_desc, post_date, bg_image, bg_image_source, article):
-    """Convert the post metadata and article contents into a static html string"""
+def generate_post (post_date, article_filename, docroot='..'):
+    """Convert the post metadata from SITE_INDEX and article file contents into a static html string"""
 
-    heading    = templates['HEAD'].safe_substitute(title=page_title, description=page_desc, docroot='..')
-    posting    = templates['DATE'].safe_substitute(post_date=post_date)
-    navigation = templates['NAV'].safe_substitute(docroot='..')
-    footer     = templates['FOOT'].safe_substitute(docroot='..')
-    
-    return templates['PAGE'].safe_substitute(header=heading,
-                                             navigation=navigation,
-                                             bg_image=bg_image,
-                                             bg_image_source=bg_image_source,
-                                             page_heading=page_title,
-                                             page_subheading=page_subtitle,
-                                             post_date=posting,
-                                             contents=load_text_file(article),
-                                             footer=footer)
+    try:
+        post  = SITE_INDEX['posts'][post_date]
+        title = post['title']
+        desc  = post['subtitle']
 
-def generate_summary (tag): 
+        # set the page header, footer and navigation
+        heading    = templates['HEAD'].safe_substitute(title=title, description=desc, docroot=docroot)
+        posting    = templates['DATE'].safe_substitute(post_date=post_date_as_display_value(post_date))
+        navigation = templates['NAV'].safe_substitute(docroot=docroot)
+        footer     = templates['FOOT'].safe_substitute(docroot=docroot)
+
+        # make the list of tag links
+        tags = []
+        for tag_name in post['tags']:
+            tags.append(templates['TAG'].safe_substitute(tag=tag_name,
+                                                         tag_link=get_tag_link(tag_name, docroot)))
+        # write the page post
+        return templates['PAGE'].safe_substitute(header=heading,
+                                                 navigation=navigation,
+                                                 bg_image=post['image'],
+                                                 bg_image_source=post['image_src'],
+                                                 page_heading=title,
+                                                 page_subheading=desc,
+                                                 post_date=posting,
+                                                 contents=load_text_file(article_filename),
+                                                 footer=footer)
+    except Exception, e:
+        print >>sys.stderr, e
+
+def generate_summary (tag, docroot=''): 
     """Use the SITE_INDEX to produce a summary page for this tag"""
 
     try:
@@ -137,7 +151,7 @@ def generate_summary (tag):
             tags = []
             for tag_name in post['tags']:
                 tags.append(templates['TAG'].safe_substitute(tag=tag_name,
-                                                             tag_link=get_tag_link(tag_name, docroot='')))
+                                                             tag_link=get_tag_link(tag_name, docroot)))
 
             posts.append(templates['PREV'].safe_substitute(link=post_date_as_link(post_date),
                                                            title=post['title'],
@@ -146,9 +160,9 @@ def generate_summary (tag):
                                                            tags=', '.join(tags)))
 
         # set the page header, footer and navigation
-        heading    = templates['HEAD'].safe_substitute(title=tag, description=tag_desc, docroot='')
-        navigation = templates['NAV'].safe_substitute(docroot='')
-        footer     = templates['FOOT'].safe_substitute(docroot='')
+        heading    = templates['HEAD'].safe_substitute(title=tag, description=tag_desc, docroot=docroot)
+        navigation = templates['NAV'].safe_substitute(docroot=docroot)
+        footer     = templates['FOOT'].safe_substitute(docroot=docroot)
 
         # write the full summary page
         return templates['PAGE'].safe_substitute(header=heading,
@@ -160,9 +174,8 @@ def generate_summary (tag):
                                                  post_date='',
                                                  contents='\n'.join(posts),
                                                  footer=footer)
-    except IndexError:
-        pass
-    
+    except Exception, e:
+        print >>sys.stderr, e
 
 
 if __name__ == "__main__":
