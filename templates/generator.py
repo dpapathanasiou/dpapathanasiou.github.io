@@ -181,9 +181,20 @@ def generate_summary (tag, docroot=''):
 if __name__ == "__main__":
     """Create a command-line main() entry point"""
 
-    if len(sys.argv) != 8:
+    args = len(sys.argv)
+    usage = ' '.join([sys.argv[0], '--tag=[tag] OR --post=[post date]', '[article filename (post only)]'])
+    
+    if args < 2 or args > 3:
         # Define the usage 
-        print sys.argv[0], '[page title]', '[page subtitle]', '[page desc]', '[post date]', '[bg image]', '[bg image source]', '[article filename]'
+        print usage
     else:
         # Do the deed
-        print generate_post(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7])
+        # create a tag summary page
+        if sys.argv[1].startswith('--tag='):
+            print generate_summary(sys.argv[1].split('=')[1])
+        # create a post
+        elif sys.argv[1].startswith('--post='):
+            print generate_post(sys.argv[1].split('=')[1], sys.argv[2])
+        # sorry, charlie
+        else:
+            print usage
