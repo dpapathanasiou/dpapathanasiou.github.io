@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Personal web site of Denis Papathanasiou">
+    <meta name="description" content="All the Pieces Matter | The personal web site of Denis Papathanasiou">
     <meta name="author" content="Denis Papathanasiou">
     <title>Denis Papathanasiou</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <link href="/css/my-blog.css" rel="stylesheet">
+    <link href="/css/my-blog.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -21,32 +21,33 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
 
-  <!-- Navigation -->
   <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
   <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
       <li class="sidebar-brand"><a href="/" onclick = $("#menu-close").click(); >Denis Papathanasiou</a></li>
-      <li class="sidebar-brand"><a href="aikido.html" onclick = $("#menu-close").click(); >aikido</a></li>
-      <li class="sidebar-brand"><a href="hardware.html" onclick = $("#menu-close").click(); >hardware</a></li>
-      <li class="sidebar-brand"><a href="programming.html" onclick = $("#menu-close").click(); >programming</a></li>
-      <li class="sidebar-brand"><a href="random.html" onclick = $("#menu-close").click(); >random</a></li>
-      <li class="sidebar-brand"><a href="technology.html" onclick = $("#menu-close").click(); >technology</a></li>
-      <li class="sidebar-brand"><a href="#contacts" onclick = $("#menu-close").click(); >contact</a></li>
+      <li class="sidebar-brand"><a href="/aikido.html" onclick = $("#menu-close").click(); >aikido</a></li>
+      <li class="sidebar-brand"><a href="/hardware.html" onclick = $("#menu-close").click(); >hardware</a></li>
+      <li class="sidebar-brand"><a href="/programming.html" onclick = $("#menu-close").click(); >programming</a></li>
+      <li class="sidebar-brand"><a href="/random.html" onclick = $("#menu-close").click(); >random</a></li>
+      <li class="sidebar-brand"><a href="/technology.html" onclick = $("#menu-close").click(); >technology</a></li>
+      <li class="sidebar-brand"><a href="/#contacts" onclick = $("#menu-close").click(); >contact</a></li>
     </ul>
   </nav>
 
-  <!-- Page Header -->
-  <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+
+  <header class="intro-header" style="background-image: url('/img/home-bg.jpg')"> <!-- source: http://denis.papathanasiou.org/ -->
     <div class="container">
       <div class="row">
 	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 	  <div class="site-heading">
 	    <h1>Denis Papathanasiou</h1>
 	    <hr class="small">
-	    <span class="subheading">All the Pieces Matter</span>
+	    <h2 class="subheading">All the Pieces Matter</h2>
+	    
 	  </div>
 	</div>
       </div>
@@ -57,24 +58,18 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-	
-	<!-- List of Posts -->
-	<div class="post-preview">
-	  <a href="/posts/2015.05.30.post.html">
-	    <h2 class="post-title">PiScan</h2>
-	    <h3 class="post-subtitle">An open-source version of the Amazon Dash Button using a Raspberry Pi</h3>
-	  </a>
-	  <p class="post-meta"><i class="fa fa-calendar"></i> May 30, 2015 | <i class="fa fa-tags"></i> <a href="/hardware.html">Hardware</a>, <a href="/programming.html">Programming</a>, <a href="/technology.html">Technology</a> </p>
-	</div>
-	<hr>
+<div class="post-preview">
+  <a href="/posts/2015.05.30.post.html">
+    <h2 class="post-title">PiScan</h2>
+    <h3 class="post-subtitle">An open-source version of the Amazon Dash Button using a Raspberry Pi</h3>
+  </a>
+  <p class="post-meta"><i class="fa fa-calendar"></i> May 30, 2015 | <i class="fa fa-tags"></i> <a href="/hardware.html">Hardware</a>
+, <a href="/programming.html">Programming</a>
+, <a href="/technology.html">Technology</a>
+ </p>
+</div>
 
-	<!-- Pager -->
-	<!-- 
-	<ul class="pager">
-	  <li class="next"><a href="archive.html">Archive &rarr;</a></li>
-	</ul>
-	-->
-	
+        <hr>
       </div>
     </div>
   </div>
@@ -125,3 +120,5 @@
   
 </body>
 </html>
+
+
