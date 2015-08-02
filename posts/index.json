@@ -1,5 +1,6 @@
 {
   "tags": {
+    "Index": {"link": "/", "heading": "All the Pieces Matter", "image": "/img/home-bg.jpg", "image_src" :"http://denis.papathanasiou.org/"}, 
     "Aikido": {"link": "aikido.html", "heading": "", "image": "", "image_src" :""}, 
     "Hardware": {"link": "hardware.html", "heading": "", "image": "", "image_src" :""}, 
     "Programming": {"link": "programming.html", "heading": "", "image": "", "image_src" :""}, 
