@@ -7,6 +7,6 @@
     "Technology": {"link": "technology.html", "heading": "", "image": "", "image_src" :""} 
   },
   "posts": {
-    "20150530": {"title": "PiScan", "subtitle": "An open-source version of the Amazon Dash Button using a Raspberry Pi", "image": "", "image_src" :"", "tags": ["Hardware", "Programming", "Technology"]}
+    "20150530": {"title": "PiScan", "subtitle": "An open-source version of the Amazon Dash Button using a Raspberry Pi", "image": "../img/posts/barcode.jpg", "image_src" :"https://commons.wikimedia.org/wiki/File:Barcode_%282409057265%29.jpg", "tags": ["Hardware", "Programming", "Technology"]}
   }
 }
