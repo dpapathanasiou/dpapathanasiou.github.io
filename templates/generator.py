@@ -71,6 +71,18 @@ def posts_for_tag (tag):
 
     return posts
 
+def get_all_posts ():
+    """Return a dict of all the posts"""
+
+    posts = {}
+    try:
+        for (date, post) in SITE_INDEX['posts'].items():
+            posts[date] = post
+    except KeyError:
+        pass
+
+    return posts
+
 def get_tag_link (tag, docroot='..'):
     """Return the html link for this tag"""
 
@@ -117,7 +129,7 @@ def generate_post (post_date, article_filename, docroot='..'):
         tags = []
         for tag_name in post['tags']:
             tags.append(templates['TAG'].safe_substitute(tag=tag_name,
-                                                         tag_link=get_tag_link(tag_name, docroot)))
+                                                         tag_link=get_tag_link(tag_name, docroot=docroot)))
         # write the page post
         return templates['PAGE'].safe_substitute(header=heading,
                                                  navigation=navigation,
@@ -131,7 +143,7 @@ def generate_post (post_date, article_filename, docroot='..'):
     except Exception, e:
         print >>sys.stderr, e
 
-def generate_summary (tag, docroot=''): 
+def generate_summary (tag, docroot=''):
     """Use the SITE_INDEX to produce a summary page for this tag"""
 
     try:
@@ -139,11 +151,24 @@ def generate_summary (tag, docroot=''):
         tag_desc = tag_data['heading']
         
         # get the list of posts for this tag
-        post_data = posts_for_tag (tag)
+        post_limit = None
+        page_title = tag
+
+        # index is a special case
+        if 'Index' == tag:
+            post_data  = get_all_posts()
+            post_limit = 5
+            page_title = 'Denis Papathanasiou'
+        else:
+            post_data = posts_for_tag (tag)
 
         # write their summaries in reverse chronological order
         posts = []
-        for post_date in sorted(post_data.iterkeys(), reverse=True):
+        for i, post_date in enumerate(sorted(post_data.iterkeys(), reverse=True)):
+            if post_limit is not None and \
+               i > post_limit:
+                break
+            
             # get the data for this post
             post = post_data[post_date]
             
@@ -151,16 +176,16 @@ def generate_summary (tag, docroot=''):
             tags = []
             for tag_name in post['tags']:
                 tags.append(templates['TAG'].safe_substitute(tag=tag_name,
-                                                             tag_link=get_tag_link(tag_name, docroot)))
+                                                             tag_link=get_tag_link(tag_name, docroot=docroot)))
 
-            posts.append(templates['PREV'].safe_substitute(link=post_date_as_link(post_date),
+            posts.append(templates['PREV'].safe_substitute(link=post_date_as_link(post_date, docroot=docroot),
                                                            title=post['title'],
                                                            sub_title=post['subtitle'],
                                                            date=post_date_as_display_value(post_date),
                                                            tags=', '.join(tags)))
 
         # set the page header, footer and navigation
-        heading    = templates['HEAD'].safe_substitute(title=tag, description=tag_desc, docroot=docroot)
+        heading    = templates['HEAD'].safe_substitute(title=page_title, description=tag_desc, docroot=docroot)
         navigation = templates['NAV'].safe_substitute(docroot=docroot)
         footer     = templates['FOOT'].safe_substitute(docroot=docroot)
 
@@ -169,7 +194,7 @@ def generate_summary (tag, docroot=''):
                                                  navigation=navigation,
                                                  bg_image=tag_data['image'],
                                                  bg_image_source=tag_data['image_src'],
-                                                 page_heading=tag,
+                                                 page_heading=page_title,
                                                  page_subheading=tag_desc,
                                                  post_date='',
                                                  contents='\n'.join(posts),
