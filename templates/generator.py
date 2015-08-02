@@ -149,6 +149,9 @@ def generate_summary (tag, docroot=''):
     try:
         tag_data = SITE_INDEX['tags'][tag]
         tag_desc = tag_data['heading']
+        heading_style = ''
+        if tag_data.has_key('color'):
+            heading_style = 'style="color:'+tag_data['color']+'"'
         
         # get the list of posts for this tag
         post_limit = None
@@ -191,6 +194,7 @@ def generate_summary (tag, docroot=''):
 
         # write the full summary page
         return templates['PAGE'].safe_substitute(header=heading,
+                                                 heading_style=heading_style,
                                                  navigation=navigation,
                                                  bg_image=tag_data['image'],
                                                  bg_image_source=tag_data['image_src'],
