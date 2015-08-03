@@ -5,7 +5,7 @@
     "Hardware": {"link": "hardware.html", "heading": "", "image": "/img/circuit-board-bg.jpg", "image_src" :"https://upload.wikimedia.org/wikipedia/commons/e/ec/Silego_clock_generator.JPG"}, 
     "Programming": {"link": "programming.html", "heading": "Loads of Ones and Zeros", "color": "#00ff00", "image": "/img/source-code-bg.jpg", "image_src" :"https://pixabay.com/en/source-code-code-programming-c-583537/"}, 
     "Random": {"link": "random.html", "heading": "", "image": "", "image_src" :""}, 
-    "Technology": {"link": "technology.html", "heading": "", "image": "", "image_src" :""} 
+    "Technology": {"link": "technology.html", "heading": "", "image": "/img/matrix-bg.jpg", "image_src" :"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Peacekeeper-missile-testing.jpg/1014px-Peacekeeper-missile-testing.jpg"} 
   },
   "posts": {
     "20150726": {"title": "DSL processing in Scala", "subtitle": "", "color": "#00ff00", "image": "/img/source-code-bg.jpg", "image_src" :"https://pixabay.com/en/source-code-code-programming-c-583537/", "tags": ["Programming", "Technology"]},
