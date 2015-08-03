@@ -1,15 +1,15 @@
 {
   "tags": {
     "Index": {"link": "/", "heading": "All the Pieces Matter", "image": "/img/home-bg.jpg", "image_src" :"http://denis.papathanasiou.org/"}, 
-    "Aikido": {"link": "aikido.html", "heading": "The Way of Combining Forces", "color": "#8b0000", "image": "/img/aikido-bg.jpg", "image_src" :"http://orig02.deviantart.net/ee5d/f/2008/204/b/2/aikido_shihonage_by_cadoshi.jpg"}, 
-    "Hardware": {"link": "hardware.html", "heading": "", "image": "", "image_src" :""}, 
-    "Programming": {"link": "programming.html", "heading": "", "image": "", "image_src" :""}, 
+    "Aikido": {"link": "aikido.html", "heading": "The Way of Combining Forces", "color": "#ff0000", "image": "/img/aikido-bg.jpg", "image_src" :"http://orig02.deviantart.net/ee5d/f/2008/204/b/2/aikido_shihonage_by_cadoshi.jpg"}, 
+    "Hardware": {"link": "hardware.html", "heading": "", "image": "/img/circuit-board-bg.jpg", "image_src" :"https://upload.wikimedia.org/wikipedia/commons/e/ec/Silego_clock_generator.JPG"}, 
+    "Programming": {"link": "programming.html", "heading": "Loads of Ones and Zeros", "color": "#00ff00", "image": "/img/source-code-bg.jpg", "image_src" :"https://pixabay.com/en/source-code-code-programming-c-583537/"}, 
     "Random": {"link": "random.html", "heading": "", "image": "", "image_src" :""}, 
     "Technology": {"link": "technology.html", "heading": "", "image": "", "image_src" :""} 
   },
   "posts": {
-    "20150726": {"title": "DSL processing in Scala", "subtitle": "", "image": "", "image_src" :"", "tags": ["Programming", "Technology"]},
+    "20150726": {"title": "DSL processing in Scala", "subtitle": "", "color": "#00ff00", "image": "/img/source-code-bg.jpg", "image_src" :"https://pixabay.com/en/source-code-code-programming-c-583537/", "tags": ["Programming", "Technology"]},
     "20150530": {"title": "PiScan", "subtitle": "An open-source version of the Amazon Dash Button using a Raspberry Pi", "image": "../img/posts/barcode.jpg", "image_src" :"https://commons.wikimedia.org/wiki/File:Barcode_%282409057265%29.jpg", "tags": ["Hardware", "Programming", "Technology"]},
-    "20130516": {"title": "Sadaharu Oh", "subtitle": "The Flip-Book from &quot;Sadaharu Oh: A Zen Way of Baseball&quot;", "image": "", "image_src" :"", "tags": ["Aikido"]}
+    "20130516": {"title": "Sadaharu Oh", "subtitle": "The Flip-Book from &quot;Sadaharu Oh: A Zen Way of Baseball&quot;", "color": "#ff0000", "image": "/img/aikido-bg.jpg", "image_src" :"http://orig02.deviantart.net/ee5d/f/2008/204/b/2/aikido_shihonage_by_cadoshi.jpg", "tags": ["Aikido"]}
   }
 }

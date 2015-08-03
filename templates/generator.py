@@ -118,7 +118,10 @@ def generate_post (post_date, article_filename, docroot='..'):
         post  = SITE_INDEX['posts'][post_date]
         title = post['title']
         desc  = post['subtitle']
-
+        heading_style = ''
+        if post.has_key('color'):
+            heading_style = 'style="color:'+post['color']+'"'
+ 
         # set the page header, footer and navigation
         heading    = templates['HEAD'].safe_substitute(title=title, description=desc, docroot=docroot)
         posting    = templates['DATE'].safe_substitute(post_date=post_date_as_display_value(post_date))
@@ -132,6 +135,7 @@ def generate_post (post_date, article_filename, docroot='..'):
                                                          tag_link=get_tag_link(tag_name, docroot=docroot)))
         # write the page post
         return templates['PAGE'].safe_substitute(header=heading,
+                                                 heading_style=heading_style,
                                                  navigation=navigation,
                                                  bg_image=post['image'],
                                                  bg_image_source=post['image_src'],
