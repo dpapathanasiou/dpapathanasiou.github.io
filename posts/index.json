@@ -10,6 +10,12 @@
   "posts": {
     "20150726": {"title": "DSL processing in Scala", "subtitle": "", "color": "#00ff00", "image": "/img/source-code-bg.jpg", "image_src" :"https://pixabay.com/en/source-code-code-programming-c-583537/", "tags": ["Programming", "Technology"]},
     "20150530": {"title": "PiScan", "subtitle": "An open-source version of the Amazon Dash Button using a Raspberry Pi", "image": "../img/posts/barcode.jpg", "image_src" :"https://commons.wikimedia.org/wiki/File:Barcode_%282409057265%29.jpg", "tags": ["Hardware", "Programming", "Technology"]},
-    "20130516": {"title": "Sadaharu Oh", "subtitle": "The Flip-Book from &quot;Sadaharu Oh: A Zen Way of Baseball&quot;", "color": "#ff0000", "image": "/img/aikido-bg.jpg", "image_src" :"http://orig02.deviantart.net/ee5d/f/2008/204/b/2/aikido_shihonage_by_cadoshi.jpg", "tags": ["Aikido"]}
+    "20101209": {"title": "Kung Fu Fighting", "subtitle": "Method to this madness", "color": "#ff0000", "image": "/img/aikido-bg.jpg", "image_src" :"http://orig02.deviantart.net/ee5d/f/2008/204/b/2/aikido_shihonage_by_cadoshi.jpg", "tags": ["Aikido"]},
+    "20090516": {"title": "No Lineage, No Problem", "subtitle": "Affiliated with the University of Life", "color": "#ff0000", "image": "/img/aikido-bg.jpg", "image_src" :"http://orig02.deviantart.net/ee5d/f/2008/204/b/2/aikido_shihonage_by_cadoshi.jpg", "tags": ["Aikido"]},
+    "20130516": {"title": "Sadaharu Oh", "subtitle": "The Flip-Book from &quot;Sadaharu Oh: A Zen Way of Baseball&quot;", "color": "#ff0000", "image": "/img/aikido-bg.jpg", "image_src" :"http://orig02.deviantart.net/ee5d/f/2008/204/b/2/aikido_shihonage_by_cadoshi.jpg", "tags": ["Aikido"]},
+    "20110407": {"title": "A Typical Aikido Class", "subtitle": "Your experience may vary", "color": "#ff0000", "image": "/img/aikido-bg.jpg", "image_src" :"http://orig02.deviantart.net/ee5d/f/2008/204/b/2/aikido_shihonage_by_cadoshi.jpg", "tags": ["Aikido"]},
+    "20100407": {"title": "Ueshiba Morihei Sensei Hitting Instructor", "subtitle": "Sadaharu Oh finds out what &quot;Ma&quot; is", "color": "#ff0000", "image": "/img/aikido-bg.jpg", "image_src" :"http://orig02.deviantart.net/ee5d/f/2008/204/b/2/aikido_shihonage_by_cadoshi.jpg", "tags": ["Aikido"]},
+    "20100707": {"title": "Soft Ukemi", "subtitle": "Taste the floor", "color": "#ff0000", "image": "/img/aikido-bg.jpg", "image_src" :"http://orig02.deviantart.net/ee5d/f/2008/204/b/2/aikido_shihonage_by_cadoshi.jpg", "tags": ["Aikido"]},
+    "20120720": {"title": "&quot;What is Aikido?&quot;", "subtitle": "", "color": "#ff0000", "image": "/img/aikido-bg.jpg", "image_src" :"http://orig02.deviantart.net/ee5d/f/2008/204/b/2/aikido_shihonage_by_cadoshi.jpg", "tags": ["Aikido"]}
   }
 }
