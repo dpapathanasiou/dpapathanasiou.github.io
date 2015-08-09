@@ -5,7 +5,7 @@
     "Hardware": {"link": "hardware.html", "heading": "", "image": "/img/circuit-board-bg.jpg", "image_src" :"https://upload.wikimedia.org/wikipedia/commons/e/ec/Silego_clock_generator.JPG"}, 
     "Programming": {"link": "programming.html", "heading": "Loads of Ones and Zeros", "color": "#00ff00", "image": "/img/source-code-bg.jpg", "image_src" :"https://pixabay.com/en/source-code-code-programming-c-583537/"}, 
     "Random": {"link": "random.html", "heading": "Odds and Ends", "image": "/img/random-bg.jpg", "image_src" :"https://commons.wikimedia.org/wiki/File:Ilc_9yr_moll4096.png"}, 
-    "Technology": {"link": "technology.html", "heading": "", "image": "/img/matrix-bg.jpg", "image_src" :"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Peacekeeper-missile-testing.jpg/1014px-Peacekeeper-missile-testing.jpg"} 
+    "Technology": {"link": "technology.html", "heading": "", "image": "/img/red-binary-bg.jpg", "image_src" :"http://www.download-hd-wallpapers.com/wp-content/uploads/2014/07/red-technology-background2.jpg"} 
   },
   "posts": {
     "20090216": {"title": "How to Install Debian as a Dual-Boot (with Mac OS X) on the Mac Mini", "subtitle": "", "color": "#00ff00", "image": "/img/circuit-board-bg.jpg", "image_src" :"https://upload.wikimedia.org/wikipedia/commons/e/ec/Silego_clock_generator.JPG", "tags": ["Hardware", "Technology"]},
