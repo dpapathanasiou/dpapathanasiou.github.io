@@ -1,6 +1,6 @@
 # About
 
-This is the personal web site of Denis Papathanasiou http://denis.papathanasiou.org as static templates, to be hosted on Github Pages.
+This is the personal web site of Denis Papathanasiou http://denis.papathanasiou.org as static templates, now hosted on Github Pages.
 
 # Acknowledgements
 
