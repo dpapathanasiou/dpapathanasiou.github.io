@@ -59,15 +59,15 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-The <a href='http://sourceforge.net/projects/pyparsing/' target='_blank'>pyparsing</a> library is a terrific way of parsing and executing grammars.
+<p>The <a href='http://sourceforge.net/projects/pyparsing/' target='_blank'>pyparsing</a> library is a terrific way of parsing and executing grammars.</p>
 
-It's yet another reason I continue to work in more and more in <a href='http://python.org/' target='_blank'>Python</a> at the expense of <a href='http://common-lisp.net/' target='_blank'>Common Lisp</a>, despite Python's pedigree as a <a href='http://www.python.org/doc/essays/cp4e.html' target='_blank'>language for teaching programming to the uninitiated</a>.
+<p>It's yet another reason I continue to work in more and more in <a href='http://python.org/' target='_blank'>Python</a> at the expense of <a href='http://common-lisp.net/' target='_blank'>Common Lisp</a>, despite Python's pedigree as a <a href='http://www.python.org/doc/essays/cp4e.html' target='_blank'>language for teaching programming to the uninitiated</a>.</p>
 
-Among the <a href='http://pyparsing.wikispaces.com/Examples' target='_blank'>examples</a> in the <a href='http://pyparsing.wikispaces.com/' target='_blank'>wiki</a> is <a href='http://pyparsing.wikispaces.com/file/view/searchparser.py' target='_blank'>searchparser.py</a> which adapts pyparsing to the task of handling full-text queries in the way most search engines do: exact phrases in quotes, multiple phrases grouped by parentheses, compound queries joined by "AND", "OR", and "NOT" operators recursively, etc.
+<p>Among the <a href='http://pyparsing.wikispaces.com/Examples' target='_blank'>examples</a> in the <a href='http://pyparsing.wikispaces.com/' target='_blank'>wiki</a> is <a href='http://pyparsing.wikispaces.com/file/view/searchparser.py' target='_blank'>searchparser.py</a> which adapts pyparsing to the task of handling full-text queries in the way most search engines do: exact phrases in quotes, multiple phrases grouped by parentheses, compound queries joined by "AND", "OR", and "NOT" operators recursively, etc.</p>
 
-After experimenting with it for a while, there was one change I made which seemed an improvement over the original:
+<p>After experimenting with it for a while, there was one change I made which seemed an improvement over the original:</p>
 
-The evaluateQuotes() method takes an argument, which represents the string containing an exact phrase defined by quotes in the original query.
+<p>The evaluateQuotes() method takes an argument, which represents the string containing an exact phrase defined by quotes in the original query.</p>
 
 <pre>
 def evaluateQuotes(self, argument):
@@ -88,11 +88,11 @@ def evaluateQuotes(self, argument):
     return self.GetQuotes(' '.join(search_terms), r)
 </pre>
 
-As the documentation says, it looks up each individual word of the phrase first, and then invokes GetQuotes() with two parameters: the entire phrase string, and the result of all the individual lookups which were common to every word in the phrase.
+<p>As the documentation says, it looks up each individual word of the phrase first, and then invokes GetQuotes() with two parameters: the entire phrase string, and the result of all the individual lookups which were common to every word in the phrase.</p>
 
-If, however, the underlying data structure supports the idea of finding an exact phrase within a block of text efficiently, then there is no need to lookup each word of the larger phrase individually.
+<p>If, however, the underlying data structure supports the idea of finding an exact phrase within a block of text efficiently, then there is no need to lookup each word of the larger phrase individually.</p>
 
-So evaluateQuotes() can be simplified to:
+<p>So evaluateQuotes() can be simplified to:</p>
 
 <pre>
 def evaluateQuotes(self, argument):

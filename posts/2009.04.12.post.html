@@ -59,26 +59,26 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-The default list of color settings in <a href="http://developer.apple.com/iphone/library/documentation/uikit/reference/UIColor_Class/Reference/Reference.html">UIColor</a> is fairly limited: black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown, and clear are the choices.
+<p>The default list of color settings in <a href="http://developer.apple.com/iphone/library/documentation/uikit/reference/UIColor_Class/Reference/Reference.html">UIColor</a> is fairly limited: black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown, and clear are the choices.</p>
 
-Other than limited choice, a problem with the default palette is that there's no control over how each specific color is defined (e.g., the green might be too light or too dark for a given application, etc.).
+<p>Other than limited choice, a problem with the default palette is that there's no control over how each specific color is defined (e.g., the green might be too light or too dark for a given application, etc.).</p>
 
-Following <a href="http://discussions.apple.com/message.jspa?messageID=7162805#7162805">this suggestion</a> (thanks <a href="http://discussions.apple.com/profile.jspa?userID=1270443">ooo27</a>), here's how to set UIColor to any <a href="http://en.wikipedia.org/wiki/Web_colors">html hex color code</a>.
+<p>Following <a href="http://discussions.apple.com/message.jspa?messageID=7162805#7162805">this suggestion</a> (thanks <a href="http://discussions.apple.com/profile.jspa?userID=1270443">ooo27</a>), here's how to set UIColor to any <a href="http://en.wikipedia.org/wiki/Web_colors">html hex color code</a>.</p>
 
-Create a macro within the class implementation (.m) file:
+<p>Create a macro within the class implementation (.m) file:</p>
 <pre>#define HEXCOLOR(c) [UIColor colorWithRed:((c&gt;&gt;24)&amp;0xFF)/255.0 \
                                     green:((c&gt;&gt;16)&amp;0xFF)/255.0 \
                                      blue:((c&gt;&gt;8)&amp;0xFF)/255.0 \
                                     alpha:((c)&amp;0xFF)/255.0];</pre>
-And then use it when initializing any UIColor class.
+<p>And then use it when initializing any UIColor class.</p>
 
-For example, try:
-<code style="padding-left: 30px;">
+<p>For example, try:</p>
+<code>
 UIColor* c = HEXCOLOR(0x006600ff);
 </code>
 
-instead of:
-<code style="padding-left: 30px;">
+<p>instead of:</p>
+<code>
 UIColor* c = [UIColor greenColor];
 </code>
         <hr>

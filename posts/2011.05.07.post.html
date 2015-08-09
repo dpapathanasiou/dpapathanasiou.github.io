@@ -59,47 +59,48 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-I've been pretty happy with <a href="http://www.mythdora.com/" target="_blank">MythDora</a> over <a href="http://mysettopbox.tv/knoppmyth.html" target="_blank">KnoppMyth</a> overall (it's actively maintained, for one thing), but like most MythTV setups, the MySQL database tends to crash with regular use, despite running the <a href="http://www.mythtv.org/wiki/User_Manual:Periodic_Maintenance#Optimize_the_Database">DB Optimize Script</a> regularly.
+<p>I've been pretty happy with <a href="http://www.mythdora.com/" target="_blank">MythDora</a> over <a href="http://mysettopbox.tv/knoppmyth.html" target="_blank">KnoppMyth</a> overall (it's actively maintained, for one thing), but like most MythTV setups, the MySQL database tends to crash with regular use, despite running the <a href="http://www.mythtv.org/wiki/User_Manual:Periodic_Maintenance#Optimize_the_Database">DB Optimize Script</a> regularly.</p>
 
-After having to type (and re-type) a series of terminal commands, I finally just wrote a shell script to do everything automatically:
+<p>After having to type (and re-type) a series of terminal commands, I finally just wrote a shell script to do everything automatically:</p>
 
-<code>
+<pre>
 #!/bin/sh
-</code><code>
+
 service mythbackend stop
 service mysqld stop
 cd /var/lib/mysql/mythconverg
 myisamchk *.MYI > crash.log 2>&1
-</code><code>
+
 grep corrupt crash.log | grep table | \
  sed -e 's/ is corrupted//' | \
  sed -e 's/MyISAM-table //' | \
  sed -e "s/'//g" | \
  sed -e 's/^/myisamchk -r /' > repair.sh
-</code><code>
+
 grep fixed crash.log | \
  sed -e 's/ is usable but should be fixed//' | \
  sed -e 's/MyISAM-table //' | \
  sed -e "s/'//g" | \
  sed -e 's/^/myisamchk -r /' >> repair.sh
-</code><code>
+
 sh repair.sh > repair.log 2>&1
 myisamchk -c *.MYI > after.log 2>&1
-</code><code>
+
 echo "**** After repair ****"
 grep -i fix after.log
 grep -i corrupt after.log
 mv *.log /tmp
 mv *.sh /tmp
-</code><code>
+
 echo "**** Repair done ****"
 echo "Check /tmp/after.log and if ok, run:"
 echo "  service mysqld start"
 echo "  service mythbackend start"
-</code>
+</pre>
 
-
+<p>
 Ok, not quite <i>everything</i>, since the repair results should be checked (a simple grep for "fix" and "corrupt" suffices) before restarting the mythv services, but recovery is much easier now.
+</p>
         <hr>
       </div>
     </div>

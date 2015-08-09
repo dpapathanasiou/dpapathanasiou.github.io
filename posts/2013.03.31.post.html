@@ -60,20 +60,20 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 <p><b>Update,</b> <i>April 20, 2014</i>:<br />
-<a href="http://denis.papathanasiou.org/2014/04/20/debian-7-server-fluxbox-via-virtualbox/">Here's a newer version of this post, with a downloadable vdi package</a></p>
+<a href="http://denis.papathanasiou.org/posts/2014.04.21.post.html">Here's a newer version of this post, with a downloadable vdi package</a></p>
 <hr />
 
-I like <a href="https://www.apple.com/osx" target="_blank">Mac OSX</a> as a general computing environment, but I prefer <a href="http://www.debian.org/" target="_blank">Debian</a> (and more recently <a href="http://www.ubuntu.com/" target="_blank">Ubuntu</a>) for development.
+<p>I like <a href="https://www.apple.com/osx" target="_blank">Mac OSX</a> as a general computing environment, but I prefer <a href="http://www.debian.org/" target="_blank">Debian</a> (and more recently <a href="http://www.ubuntu.com/" target="_blank">Ubuntu</a>) for development.</p>
 
-Instead of running my Mac in <a href="http://denis.papathanasiou.org/?p=3" target="_blank">dual-boot mode</a>, I tried using <a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a> to run <a href="http://www.ubuntu.com/download/desktop" target="_blank">Ubuntu Desktop</a>.
+<p>Instead of running my Mac in <a href="http://denis.papathanasiou.org/posts/2009.02.16.post.html" target="_blank">dual-boot mode</a>, I tried using <a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a> to run <a href="http://www.ubuntu.com/download/desktop" target="_blank">Ubuntu Desktop</a>.</p>
 
-Unfortunately, the virtual image was unusable: even at two gigabytes of memory (the most allowed by the vm) it was painfully slow, and using the <a href="http://www.muktware.com/3957/ubuntu-beginners-dash" target="_blank">dash</a> was basically impossible.
+<p>Unfortunately, the virtual image was unusable: even at two gigabytes of memory (the most allowed by the vm) it was painfully slow, and using the <a href="http://www.muktware.com/3957/ubuntu-beginners-dash" target="_blank">dash</a> was basically impossible.</p>
 
-But since my development environment consists mostly of <a href="http://roxterm.sourceforge.net/" target="_blank">ROXTerm</a> and <a href="https://www.gnu.org/software/emacs" target="_blank">emacs</a>, I wanted to see how <a href="http://www.ubuntu.com/download/server" target="_blank">Ubuntu Server</a> plus a <a href="https://help.ubuntu.com/community/Installation/LowMemorySystems" target="_blank">lightweight window manager</a> such as <a href="http://www.fluxbox.org/" target="_blank">Fluxbox</a> would work instead.
+<p>But since my development environment consists mostly of <a href="http://roxterm.sourceforge.net/" target="_blank">ROXTerm</a> and <a href="https://www.gnu.org/software/emacs" target="_blank">emacs</a>, I wanted to see how <a href="http://www.ubuntu.com/download/server" target="_blank">Ubuntu Server</a> plus a <a href="https://help.ubuntu.com/community/Installation/LowMemorySystems" target="_blank">lightweight window manager</a> such as <a href="http://www.fluxbox.org/" target="_blank">Fluxbox</a> would work instead.</p>
 
-<a href="http://i.imgur.com/vRsx9EH.png"><img src="http://i.imgur.com/vRsx9EH.png" alt="Fluxbox running like a champ on Ubuntu Server in VirtualBox" width="600" height="484" /></a>
-<div style="text-align: center; font-size: 0.8em; font-style: italic; margin-top: -1em;">Fluxbox running like a champ on Ubuntu Server in VirtualBox</div>
-It's been terrific so far, and the setup was simple:
+<p><a href="http://i.imgur.com/vRsx9EH.png"><img src="http://i.imgur.com/vRsx9EH.png" alt="Fluxbox running like a champ on Ubuntu Server in VirtualBox" width="600" height="484" /></a></p>
+<p><div style="text-align: center; font-size: 0.8em; font-style: italic; margin-top: -1em;">Fluxbox running like a champ on Ubuntu Server in VirtualBox</div></p>
+<p>It's been terrific so far, and the setup was simple:</p>
 <ol>
 	<li>After downloading the Ubuntu Server iso file, I <a href="https://www.virtualbox.org/manual/ch01.html#gui-createvm" target="_blank">created a new virtual image</a> and used the iso as the base media</li>
 	<li>Once installed, I <a href="https://help.ubuntu.com/community/Installation/LowMemorySystems#Install_an_entire_lightweight_system" target="_blank">followed the instructions</a> for setting up Fluxbox without a login manager:

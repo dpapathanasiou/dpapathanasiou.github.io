@@ -59,29 +59,29 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-<a href='http://www.mplayerhq.hu/'>MPlayer</a> is a terrific <a href='http://www.drmwatch.com/ocr/article.php/3682111'>DRM-free</a> multimedia player.
+<p><a href='http://www.mplayerhq.hu/'>MPlayer</a> is a terrific <a href='http://www.drmwatch.com/ocr/article.php/3682111'>DRM-free</a> multimedia player.</p>
 
-It also contains <a href='http://www.mplayerhq.hu/DOCS/HTML/en/mencoder.html'>Mencoder</a>, which is a great tool for ripping dvds (among other things).
+<p>It also contains <a href='http://www.mplayerhq.hu/DOCS/HTML/en/mencoder.html'>Mencoder</a>, which is a great tool for ripping dvds (among other things).</p>
 
-<a href='http://www.macports.org/'>Mac Ports</a> has two versions available, <a href='http://trac.macports.org/browser/trunk/dports/multimedia/MPlayer/Portfile'>MPlayer</a> and <a href='http://trac.macports.org/browser/trunk/dports/multimedia/mplayer-devel/Portfile'>mplayer-devel</a> but neither of them built properly on my Mac (OS version 10.5.8).
+<p><a href='http://www.macports.org/'>Mac Ports</a> has two versions available, <a href='http://trac.macports.org/browser/trunk/dports/multimedia/MPlayer/Portfile'>MPlayer</a> and <a href='http://trac.macports.org/browser/trunk/dports/multimedia/mplayer-devel/Portfile'>mplayer-devel</a> but neither of them built properly on my Mac (OS version 10.5.8).</p>
 
-Fortunately, the pre-built binaries at <a href='http://stefpause.com/apple/mac/mplayer-os-x-10rc1-and-mencoder-binaries/'>this site</a> worked beautifully.
+<p>Fortunately, the pre-built binaries at <a href='http://stefpause.com/apple/mac/mplayer-os-x-10rc1-and-mencoder-binaries/'>this site</a> worked beautifully.</p>
 
-After downloading and unzipping them, I moved the two binary files, <tt>mplayer</tt> and <tt>mencoder</tt>, into <tt>/opt/local/bin</tt> so they appear in the default command-line path.
+<p>After downloading and unzipping them, I moved the two binary files, <tt>mplayer</tt> and <tt>mencoder</tt>, into <tt>/opt/local/bin</tt> so they appear in the default command-line path.</p>
 
-Since Apple's built-in DRM-enforcing <a href='http://support.apple.com/kb/HT2499'>DVD player</a> is set to startup when a DVD is inserted, I changed the default action in the <a href='http://support.apple.com/kb/HT2490'>System Preferences</a> under <a href='http://support.apple.com/kb/HT2490#l7'>Media Preferences</a> to be "Ignore" for the "When you insert a video DVD" option.
+<p>Since Apple's built-in DRM-enforcing <a href='http://support.apple.com/kb/HT2499'>DVD player</a> is set to startup when a DVD is inserted, I changed the default action in the <a href='http://support.apple.com/kb/HT2490'>System Preferences</a> under <a href='http://support.apple.com/kb/HT2490#l7'>Media Preferences</a> to be "Ignore" for the "When you insert a video DVD" option.</p>
 
-Now, I can play any DVD track with mplayer in <a href='http://macapper.com/2007/03/08/the-terminal-an-introduction/'>Terminal</a>, like this:
+<p>Now, I can play any DVD track with mplayer in <a href='http://macapper.com/2007/03/08/the-terminal-an-introduction/'>Terminal</a>, like this:</p>
 
 <pre>
 mplayer dvd://[track number]
 </pre>
 
-MPlayer also supports other playback options like subtitles, etc. (docs related to DVD playback are <a href='http://www.mplayerhq.hu/DOCS/HTML/en/dvd.html'>here</a>).
+<p>MPlayer also supports other playback options like subtitles, etc. (docs related to DVD playback are <a href='http://www.mplayerhq.hu/DOCS/HTML/en/dvd.html'>here</a>).</p>
 
-Ripping a DVD track is more complex, but the docs have <a href='http://www.mplayerhq.hu/DOCS/HTML/en/menc-feat-vcd-dvd.html'>good examples</a> to follow.
+<p>Ripping a DVD track is more complex, but the docs have <a href='http://www.mplayerhq.hu/DOCS/HTML/en/menc-feat-vcd-dvd.html'>good examples</a> to follow.</p>
 
-I wrote this shell script to simplify the process:
+<p>I wrote this shell script to simplify the process:</p>
 
 <pre>
 #!/bin/sh
@@ -102,7 +102,7 @@ else
 fi
 </pre>
 
-So to rip track 0 of a DVD (which is usually the main movie track), all I have to do is this in Terminal:
+<p>So to rip track 0 of a DVD (which is usually the main movie track), all I have to do is this in Terminal:</p>
 
 <pre>
  mencoder_dvd_rip.sh 0 movie

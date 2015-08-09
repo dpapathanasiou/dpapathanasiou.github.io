@@ -59,9 +59,9 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-I'm using the <a href="http://feedparser.org">feedparser library</a> to extract data from rss feed items.
+<p>I'm using the <a href="http://feedparser.org">feedparser library</a> to extract data from rss feed items.</p>
 
-After I wrote this function, which returns a list of item titles, I noticed that most item attributes would be retrieved the same way, i.e., the function would look exactly the same, except for the single data.append line inside the for loop.
+<p>After I wrote this function, which returns a list of item titles, I noticed that most item attributes would be retrieved the same way, i.e., the function would look exactly the same, except for the single data.append line inside the for loop.</p>
 <pre style="padding-left: 30px;">def item_titles (feed_url):
     """Return a list of the item titles found in this feed url"""
     data = []
@@ -71,9 +71,9 @@ After I wrote this function, which returns a list of item titles, I noticed that
             for e in feed.entries:
                 data.append(e.title.encode('utf-8'))
     return data</pre>
-In <a href="http://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a>, I could simply write a macro, then replace the data.append line depending on which attribute I wanted.
+<p>In <a href="http://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a>, I could simply write a macro, then replace the data.append line depending on which attribute I wanted.</p>
 
-I wondered if there was anything similar in Python, and found that I could use <em><a href="http://effbot.org/pyfaq/how-do-you-make-a-higher-order-function-in-python.htm">higher-order functions</a></em> (thanks, <a href="http://rebertia.com/">Chris</a>), like this:
+<p>I wondered if there was anything similar in Python, and found that I could use <em><a href="http://effbot.org/pyfaq/how-do-you-make-a-higher-order-function-in-python.htm">higher-order functions</a></em> (thanks, <a href="http://rebertia.com/">Chris</a>), like this:</p>
 <pre style="padding-left: 30px;">def _read_item_data (feed_url, get_fn):
     """Return a list of item data (specified by the get_fn) found in this feed url"""
     data = []
@@ -86,7 +86,7 @@ I wondered if there was anything similar in Python, and found that I could use <
                 except AttributeError, detail:
                      data.append(None)
     return data</pre>
-So for the item titles, all I need to call is this:
+<p>So for the item titles, all I need to call is this:</p>
 <pre style="padding-left: 30px;">def item_titles (feed_url):
     """Return a list of the item titles found in this feed url"""
     return _read_item_data(feed_url, lambda x: normalize_string(x.title))</pre>
@@ -94,7 +94,7 @@ And for the item links, I can do this:
 <pre style="padding-left: 30px;">def item_links (feed_url):
     """Return a list of the item links found in this feed url"""
     return _read_item_data(feed_url, lambda x: normalize_string(x.link))</pre>
-And so on, where the normalize_string() function takes care of any encoding and other formatting.
+<p>And so on, where the normalize_string() function takes care of any encoding and other formatting.</p>
         <hr>
       </div>
     </div>

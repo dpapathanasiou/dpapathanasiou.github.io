@@ -59,7 +59,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-Here's how to handle <a href="http://recaptcha.net/">reCaptcha</a> form submissions in Python, on the server side:
+<p>Here's how to handle <a href="http://recaptcha.net/">reCaptcha</a> form submissions in Python, on the server side:</p>
 
 <pre>
 #!/usr/bin/python
@@ -98,11 +98,11 @@ def confirm (client_ip_address, recaptcha_challenge_field, recaptcha_response_fi
     return result
 </pre>
 
-Just call <tt>confirm (client_ip_address, recaptcha_challenge_field, recaptcha_response_field)</tt> to get the result, either True (i.e., the captcha was completed correctly) or False.
+<p>Just call <tt>confirm (client_ip_address, recaptcha_challenge_field, recaptcha_response_field)</tt> to get the result, either True (i.e., the captcha was completed correctly) or False.</p>
 
-The <tt>client_ip_address</tt>, <tt>recaptcha_challenge_field</tt>, <tt>recaptcha_response_field</tt> fields are provided by parsing the results of POSTing the form (e.g., using a web server module like <a href='http://modpython.org/'>Mod_python</a> or <a href='http://code.google.com/p/modwsgi/'>mod_wsgi</a>).
+<p>The <tt>client_ip_address</tt>, <tt>recaptcha_challenge_field</tt>, <tt>recaptcha_response_field</tt> fields are provided by parsing the results of POSTing the form (e.g., using a web server module like <a href='http://modpython.org/'>Mod_python</a> or <a href='http://code.google.com/p/modwsgi/'>mod_wsgi</a>).</p>
 
-And the <tt>to_bytestring()</tt> function, which is defined as follows, insures that any unicode character (which do appear occasionally in captchas) get handled correctly:
+<p>And the <tt>to_bytestring()</tt> function, which is defined as follows, insures that any unicode character (which do appear occasionally in captchas) get handled correctly:</p>
 
 <pre>
 def to_bytestring (s):
@@ -115,12 +115,11 @@ def to_bytestring (s):
             return s.encode('utf-8')
 </pre>
 
-This code is now <a href="https://github.com/dpapathanasiou/python-recaptcha" target="_blank">available for download from github</a>.
+<p>This code is now <a href="https://github.com/dpapathanasiou/python-recaptcha" target="_blank">available for download from github</a>.</p>
 
 <hr />
-<strong>Update</strong> August 3, 2012: Since I'm now learning <a href="http://golang.org/" target="_blank">Go</a>, I've also created <a href="https://github.com/dpapathanasiou/go-recaptcha" target="_blank">go-recaptcha</a>, a package version in that language <a href="http://golang.org/" target="_blank">#golang</a>
+<p><strong>Update</strong> August 3, 2012: Since I'm now learning <a href="http://golang.org/" target="_blank">Go</a>, I've also created <a href="https://github.com/dpapathanasiou/go-recaptcha" target="_blank">go-recaptcha</a>, a package version in that language <a href="http://golang.org/" target="_blank">#golang</a></p>
 
-<p>&nbsp;</p>
         <hr>
       </div>
     </div>

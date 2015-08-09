@@ -59,17 +59,17 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-<a href="http://snippets.dzone.com/posts/show/757" target="_blank">This</a> is a good example of how to create and send emails with file attachments in Python.
+<p><a href="http://snippets.dzone.com/posts/show/757" target="_blank">This</a> is a good example of how to create and send emails with file attachments in Python.</p>
 
-It assumes, however, that every attached file is binary, and uses a generic <tt>application/octet-stream</tt> mimetype for each.
+<p>It assumes, however, that every attached file is binary, and uses a generic <tt>application/octet-stream</tt> mimetype for each.</p>
 
-It also makes encoding assumptions about the strings passed to the Subject line, recipient email addresses, and the message body text which may be incorrect in actual use.
+<p>It also makes encoding assumptions about the strings passed to the Subject line, recipient email addresses, and the message body text which may be incorrect in actual use.</p>
 
-This updated version addresses those potential problems, no pun intended.
+<p>This updated version addresses those potential problems, no pun intended.</p>
 
-<b>Attached File Mimetype</b>
+<p><b>Attached File Mimetype</b></p>
 
-Instead of assuming <tt>application/octet-stream</tt>, we can use the python-magic module (available <a href="http://pypi.python.org/pypi/python-magic/0.3.1" target="_blank">here</a>, <a href="http://github.com/ahupp/python-magic" target="_blank">here</a>, or by <tt>apt-get install python-magic</tt> on <a href="http://www.debian.org/" target="_blank">Debian</a> and <a href="http://www.ubuntu.com/" target="_blank">Ubuntu</a> systems) to determine it explicitly:
+<p>Instead of assuming <tt>application/octet-stream</tt>, we can use the python-magic module (available <a href="http://pypi.python.org/pypi/python-magic/0.3.1" target="_blank">here</a>, <a href="http://github.com/ahupp/python-magic" target="_blank">here</a>, or by <tt>apt-get install python-magic</tt> on <a href="http://www.debian.org/" target="_blank">Debian</a> and <a href="http://www.ubuntu.com/" target="_blank">Ubuntu</a> systems) to determine it explicitly:</p>
 
 <pre>
 MIME_MAGIC = None
@@ -91,9 +91,9 @@ def get_file_mimetype (filename):
     return result
 </pre>
 
-The get_file_mimetype() function returns a string in the form <tt>'Content-Type major type/Content-Type minor type'</tt>, e.g. <tt>'text/plain charset=us-ascii'</tt>, <tt>'application/pdf'</tt>, etc.
+<p>The get_file_mimetype() function returns a string in the form <tt>'Content-Type major type/Content-Type minor type'</tt>, e.g. <tt>'text/plain charset=us-ascii'</tt>, <tt>'application/pdf'</tt>, etc.</p>
 
-Now we can change the loop that attaches files to the message from this:
+<p>Now we can change the loop that attaches files to the message from this:</p>
 
 <pre>
     for file in files:
@@ -105,7 +105,7 @@ Now we can change the loop that attaches files to the message from this:
         msg.attach(part)
 </pre>
 
-To this, below. Note that since the mimetype can be text, we change the file read flag from "rb" (binary) to just "r", as necessary.
+<p>To this, below. Note that since the mimetype can be text, we change the file read flag from "rb" (binary) to just "r", as necessary.</p>
 
 <pre>
     for file in files:
@@ -128,15 +128,15 @@ To this, below. Note that since the mimetype can be text, we change the file rea
         msg.attach(part)
 </pre>
 
-<b>Subject Encoding</b>
+<p><b>Subject Encoding</b></p>
 
-The original version used a simple assignment to define the Subject line:
+<p>The original version used a simple assignment to define the Subject line:</p>
 
 <pre>
     msg['Subject'] = subject
 </pre>
 
-But this limits the Subject line to 7-bit ASCII characters only. For foreign language support and other encodings, it's better to use the <tt>email.Header</tt> package, which requires an additional import:
+<p>But this limits the Subject line to 7-bit ASCII characters only. For foreign language support and other encodings, it's better to use the <tt>email.Header</tt> package, which requires an additional import:</p>
 
 <pre>
 from email.Header import Header
@@ -162,9 +162,9 @@ def to_unicode (s):
             return unicode(s, 'utf-8')
 </pre>
 
-<b>Email Address Encoding</b>
+<p><b>Email Address Encoding</b></p>
 
-Unlike the Subject line, all email addresses must be ascii, so instead of defining the recipient list like this:
+<p>Unlike the Subject line, all email addresses must be ascii, so instead of defining the recipient list like this:</p>
 
 <pre>
     msg['To'] = COMMASPACE.join(to)
@@ -216,11 +216,11 @@ def to_bytestring (s):
             return s.encode('utf-8')
 </pre>
 
-<b>A Complete Example</b>
+<p><b>A Complete Example</b></p>
 
-Putting it all together, this function lets you send the same email to multiple recipients, with optional files (binary or text) as attachments, and an optional message body in html.
+<p>Putting it all together, this function lets you send the same email to multiple recipients, with optional files (binary or text) as attachments, and an optional message body in html.</p>
 
-It also allows you to define the "Reply-To" header of the message as a email address different from the one used to send the message.
+<p>It also allows you to define the "Reply-To" header of the message as a email address different from the one used to send the message.</p>
 
 <pre>
 def send(sender, subject, recipient_list=[], text, html=None, files=[], replyto=None):

@@ -59,23 +59,22 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-I've recently included social media "share" buttons both here on this site, and at <a href="http://macaronics.com/" target="_blank">macaronics.com</a> (whether or not they serve any useful purpose is <a href="http://www.reddit.com/r/web_design/comments/ay5du/ask_rweb_design_are_share_this_buttons_a_waste_of/" target="_blank">another question entirely</a>).
+<p>I've recently included social media "share" buttons both here on this site, and at <a href="http://macaronics.com/" target="_blank">macaronics.com</a> (whether or not they serve any useful purpose is <a href="http://www.reddit.com/r/web_design/comments/ay5du/ask_rweb_design_are_share_this_buttons_a_waste_of/" target="_blank">another question entirely</a>).</p>
 
-A problem with implementing them, though, is that each site wants you to include a boatload of javascript along with the button images, and you also have to set the button within an iframe or other weird DOM construct foreign to your page layout.
+<p>A problem with implementing them, though, is that each site wants you to include a boatload of javascript along with the button images, and you also have to set the button within an iframe or other weird DOM construct foreign to your page layout.</p>
 
-Getting each of the buttons to line up in a simple row is so tricky, in fact, that a bunch of <a href="http://sharethis.com/" target="_blank">third party</a> <a href="http://www.addthis.com/" target="_blank">services</a> have cropped up to do the work for you.
+<p>Getting each of the buttons to line up in a simple row is so tricky, in fact, that a bunch of <a href="http://sharethis.com/" target="_blank">third party</a> <a href="http://www.addthis.com/" target="_blank">services</a> have cropped up to do the work for you.</p>
 
-But if you don't care about having the current number of "likes" or "shares" displayed, there is <a href="https://gist.github.com/4329613" target="_blank">a simpler way</a>.
+<p>But if you don't care about having the current number of "likes" or "shares" displayed, there is <a href="https://gist.github.com/4329613" target="_blank">a simpler way</a>.</p>
 
-My technique is based on <a href="http://stackoverflow.com/a/9321347" target="_blank">this approach</a> by <a href="http://stackoverflow.com/users/102896/steve-wortham" target="_blank">Steve Wortham</a> and <a href="http://www.reddit.com/buttons/" target="_blank">reddit's method</a> for using javascript within the link to identify the window.location and use that to build the share link dynamically.
+<p>My technique is based on <a href="http://stackoverflow.com/a/9321347" target="_blank">this approach</a> by <a href="http://stackoverflow.com/users/102896/steve-wortham" target="_blank">Steve Wortham</a> and <a href="http://www.reddit.com/buttons/" target="_blank">reddit's method</a> for using javascript within the link to identify the window.location and use that to build the share link dynamically.</p>
 
-For the button images, I used <a href="https://www.fatcow.com/free-icons" target="_blank">Fatcow's Free Icons</a> for Facebook, Twitter, LinkedIn, and Google Plus.
+<p>For the button images, I used <a href="https://www.fatcow.com/free-icons" target="_blank">Fatcow's Free Icons</a> for Facebook, Twitter, LinkedIn, and Google Plus.</p>
 
-<a href="http://www.reddit.com/buttons/" target="_blank">Reddit</a> and <a href="http://pinterest.com/" target="_blank">Pinterest</a> both provide button icons (though for Pinterest I had to <a href="http://passets-ec.pinterest.com/images/about/logos/Pinterest_Favicon.png" target="_blank">download the png logo file</a> and scale it down to the same size as the others).
+<p><a href="http://www.reddit.com/buttons/" target="_blank">Reddit</a> and <a href="http://pinterest.com/" target="_blank">Pinterest</a> both provide button icons (though for Pinterest I had to <a href="http://passets-ec.pinterest.com/images/about/logos/Pinterest_Favicon.png" target="_blank">download the png logo file</a> and scale it down to the same size as the others).</p>
 
-Except for reddit, none of the sites offered hosting (without involving all the extraneous javascript includes I didn't want in the first place), so I used <a href="http://www.imgur.com/" target="_blank">Imgur</a>.
+<p>Except for reddit, none of the sites offered hosting (without involving all the extraneous javascript includes I didn't want in the first place), so I used <a href="http://www.imgur.com/" target="_blank">Imgur</a>.</p>
 
-You can see the results here:
         <hr>
       </div>
     </div>

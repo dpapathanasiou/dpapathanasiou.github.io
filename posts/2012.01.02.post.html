@@ -59,43 +59,40 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-One of the nice things about <a href="http://www.mythtv.org/" target="_blank">MythTV</a> is that it lets me save any broadcast as an unencrypted, <a href="http://en.wikipedia.org/wiki/Digital_rights_management#.22DRM-Free.22" target="_blank">DRM-free</a> <a href="http://en.wikipedia.org/wiki/Mpeg" target="_blank">mpeg</a> file.
+<p>One of the nice things about <a href="http://www.mythtv.org/" target="_blank">MythTV</a> is that it lets me save any broadcast as an unencrypted, <a href="http://en.wikipedia.org/wiki/Digital_rights_management#.22DRM-Free.22" target="_blank">DRM-free</a> <a href="http://en.wikipedia.org/wiki/Mpeg" target="_blank">mpeg</a> file.</p>
 
-I recently found out how to use <a href="http://en.wikipedia.org/wiki/MEncoder" target="_blank">MEncoder</a> to split and trim those mpeg files into single or multiple clips.
+<p>I recently found out how to use <a href="http://en.wikipedia.org/wiki/MEncoder" target="_blank">MEncoder</a> to split and trim those mpeg files into single or multiple clips.</p>
 
-MEncoder is a good tool to use because it's free (as in <a href="http://en.wiktionary.org/wiki/free_as_in_beer" target="_blank">both freedom and beer</a>), and runs on all major platforms (there are even <a href="http://prdownloads.sourceforge.net/mplayerosx/ffmpegXbinaries20060307.zip" target="_blank">pre-built binaries for Mac OSX</a>).
+<p>MEncoder is a good tool to use because it's free (as in <a href="http://en.wiktionary.org/wiki/free_as_in_beer" target="_blank">both freedom and beer</a>), and runs on all major platforms (there are even <a href="http://prdownloads.sourceforge.net/mplayerosx/ffmpegXbinaries20060307.zip" target="_blank">pre-built binaries for Mac OSX</a>).</p>
 
-MEncoder has two command line options, <tt>-ss</tt> and <tt>-endpos</tt>, which let you define the start or end position of the clip you want to extract.
+<p>MEncoder has two command line options, <tt>-ss</tt> and <tt>-endpos</tt>, which let you define the start or end position of the clip you want to extract.</p>
 
-Unfortunately, <a href="http://www.misterhowto.com/index.php?category=Computers&subcategory=Video&article=trim_or_split_with_mencoder" target="_blank">the default command</a> doesn't work with mpeg files.
+<p>Unfortunately, <a href="http://www.misterhowto.com/index.php?category=Computers&subcategory=Video&article=trim_or_split_with_mencoder" target="_blank">the default command</a> doesn't work with mpeg files.</p>
 
-The work-around is to convert the mpeg file to avi format first:
+<p>The work-around is to convert the mpeg file to avi format first:</p>
 
-<pre>$ mencoder original.mpeg -ovc lavc -oac lavc -o original.avi
-</pre>
+<pre>$ mencoder original.mpeg -ovc lavc -oac lavc -o original.avi</pre>
 
-Then, create a copy starting or ending at a given point in time, defined as <tt>hour:minute:second</tt> using either the <tt>-ss</tt> or <tt>-endpos</tt> options.
+<p>Then, create a copy starting or ending at a given point in time, defined as <tt>hour:minute:second</tt> using either the <tt>-ss</tt> or <tt>-endpos</tt> options.</p>
 
-For example, to extract a clip from the 17 minute 50 second mark to the 57 minute 47 second mark from a one-hour file, these two commands will do the trick:
+<p>For example, to extract a clip from the 17 minute 50 second mark to the 57 minute 47 second mark from a one-hour file, these two commands will do the trick:</p>
 
 <pre>$ mencoder -ss 00:17:50 -oac copy -ovc copy original.avi -o clip_start.avi
 $ mencoder -endpos 00:39:57 -oac copy -ovc copy clip_start.avi -o clip.avi
 </pre>
 
-Note that the <tt>-endpos</tt> was recalculated for the second command as 39:57, not 57:47. 
+<p>Note that the <tt>-endpos</tt> was recalculated for the second command as 39:57, not 57:47. </p>
 
-That's because the clip_start.avi file is 17 minutes and 50 seconds shorter than the original, and so we need to recalculate the clip end position in terms of the new length.
+<p>That's because the clip_start.avi file is 17 minutes and 50 seconds shorter than the original, and so we need to recalculate the clip end position in terms of the new length.</p>
 
-The file clip.avi contains the clip from 17:50 to 57:47 extracted from the original file, and we can discard the intermediate clip_start.avi file.
+<p>The file clip.avi contains the clip from 17:50 to 57:47 extracted from the original file, and we can discard the intermediate clip_start.avi file.</p>
 
-It takes two commands because MEncoder seems to ignore the second <tt>-ss</tt> or <tt>-endpos</tt> option it finds, and uses just the first one.
+<p>It takes two commands because MEncoder seems to ignore the second <tt>-ss</tt> or <tt>-endpos</tt> option it finds, and uses just the first one.</p>
 
-It would be nice if it would just let us do this instead:
+<p>It would be nice if it would just let us do this instead:</p>
 
-<pre>$ mencoder -ss 00:17:50 -endpos 00:57:47 -oac copy -ovc copy original.avi -o clip.avi
-</pre>
+<pre>$ mencoder -ss 00:17:50 -endpos 00:57:47 -oac copy -ovc copy original.avi -o clip.avi</pre>
 
-<p>&nbsp;</p>
         <hr>
       </div>
     </div>

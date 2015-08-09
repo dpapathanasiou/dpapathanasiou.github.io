@@ -59,36 +59,32 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-Python's <a href='http://docs.python.org/distutils/index.html#distutils-index' target='_blank'>distutils</a> mechanism makes distributing and <a href='' target='_blank'>installing</a> modules <a href='http://wiki.python.org/moin/Distutils/Tutorial' target='_blank'>simple</a>.
+<p>Python's <a href='http://docs.python.org/distutils/index.html#distutils-index' target='_blank'>distutils</a> mechanism makes distributing and <a href='' target='_blank'>installing</a> modules <a href='http://wiki.python.org/moin/Distutils/Tutorial' target='_blank'>simple</a>.</p>
 
-In most cases, either
+<p>In most cases, either</p>
 <code>
-python setup.py build
-python setup.py install
-</code>
+python setup.py build<br/>
+python setup.py install</code>
 
-or just
+<p>or just</p>
 <code>
-python setup.py install
-</code>
+python setup.py install</code>
 
-is all that's necessary.
+<p>is all that's necessary.</p>
 
-Unfortunately (and somewhat surprisingly), there's no <i>uninstall</i> option specified. 
+<p>Unfortunately (and somewhat surprisingly), there's no <i>uninstall</i> option specified. </p>
 
-Manually deleting the .egg-info file and corresponding folder from the python site-packages folder is one way, but if the installer used an alternative or custom setup, then there is no way to be sure all the associated files and dependencies are gone.
+<p>Manually deleting the .egg-info file and corresponding folder from the python site-packages folder is one way, but if the installer used an alternative or custom setup, then there is no way to be sure all the associated files and dependencies are gone.</p>
 
-The way around this is to use the <tt>--record</tt> switch with setup.py at install, which will log all the files corresponding to the module:
+<p>The way around this is to use the <tt>--record</tt> switch with setup.py at install, which will log all the files corresponding to the module:</p>
 <code>
-python setup.py install --record files.txt
-</code>
+python setup.py install --record files.txt</code>
 
-Then, to uninstall (either ahead of a version upgrade or outright deletion), just use the contents of files.txt to guide the removal:
+<p>Then, to uninstall (either ahead of a version upgrade or outright deletion), just use the contents of files.txt to guide the removal:</p>
 <code>
-cat files.txt | xargs rm -rf
-</code>
+cat files.txt | xargs rm -rf</code>
 
-Hat tip to <a href='http://cihar.com/' target='_blank'>Michal Čihař</a>, via <a href='http://stackoverflow.com/questions/1550226/python-setup-py-uninstall' target='_blank'>StackOverFlow</a>.
+<p>Hat tip to <a href='http://cihar.com/' target='_blank'>Michal Čihař</a>, via <a href='http://stackoverflow.com/questions/1550226/python-setup-py-uninstall' target='_blank'>StackOverFlow</a>.</p>
 
 
         <hr>

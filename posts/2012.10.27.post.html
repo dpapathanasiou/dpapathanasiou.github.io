@@ -59,24 +59,24 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-One of the reasons I keep going back to <a href="http://python.org/" target="_blank">Python</a> is because of the <a href="http://lxml.de/" target="_blank">lxml library</a>.
+<p>One of the reasons I keep going back to <a href="http://python.org/" target="_blank">Python</a> is because of the <a href="http://lxml.de/" target="_blank">lxml library</a>.</p>
 
-Not only is it terrific in terms of handling xml, <a href="http://lxml.de/lxmlhtml.html" target="_blank">it can do wonders with html of all flavors</a>, even badly-formed and specification-invalid html data.
+<p>Not only is it terrific in terms of handling xml, <a href="http://lxml.de/lxmlhtml.html" target="_blank">it can do wonders with html of all flavors</a>, even badly-formed and specification-invalid html data.</p>
 
-A common task I have these days is to grab the text from an html page or article (e.g., in <a href="http://denis.papathanasiou.org/?p=975" target="_blank">curating content for Macaronics</a>).
+<p>A common task I have these days is to grab the text from an html page or article (e.g., in <a href="http://denis.papathanasiou.org/?p=975" target="_blank">curating content for Macaronics</a>).</p>
 
-As <a href="https://gist.github.com/3965052" target="_blank">this gist shows</a>, lxml makes this dead simple, using xpath and the <a href="http://infohost.nmt.edu/tcc/help/pubs/pylxml/web/xpath.html#xpath-example" target="_blank">"descendant-or-self::" axis selector</a>.
+<p>As <a href="https://gist.github.com/3965052" target="_blank">this gist shows</a>, lxml makes this dead simple, using xpath and the <a href="http://infohost.nmt.edu/tcc/help/pubs/pylxml/web/xpath.html#xpath-example" target="_blank">"descendant-or-self::" axis selector</a>.</p>
 
-The only real work is understanding the page structure and creating the correct <a href="http://msdn.microsoft.com/en-us/library/ms256086.aspx" target="_blank">xpath expression</a> for each site (the <a href="http://stackoverflow.com/a/4240037" target="_blank">readability algorithm</a> is essentially a collection of these rules), and monitoring their changes over time so that the <a href="http://www.zvon.org/comp/r/tut-XPath_1.html" target="_blank">xpath expression can be updated</a> accordingly.
+<p>The only real work is understanding the page structure and creating the correct <a href="http://msdn.microsoft.com/en-us/library/ms256086.aspx" target="_blank">xpath expression</a> for each site (the <a href="http://stackoverflow.com/a/4240037" target="_blank">readability algorithm</a> is essentially a collection of these rules), and monitoring their changes over time so that the <a href="http://www.zvon.org/comp/r/tut-XPath_1.html" target="_blank">xpath expression can be updated</a> accordingly.</p>
 
-Another bonus is that it works with foreign language sites, too, provided the parser is passed the same encoding as defined in the target page's <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html" target="_blank">Content-Type</a> meta tag.
+<p>Another bonus is that it works with foreign language sites, too, provided the parser is passed the same encoding as defined in the target page's <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html" target="_blank">Content-Type</a> meta tag.</p>
 
-Here's an example of grabbing the text from a web article by <a href="http://facta.co.jp/" target="_blank">Facta</a>, a Japanese business magazine, and saving it as a text file, so I can add it to the list of articles in <a href="http://macaronics.com/" target="_blank">Macaronics</a>:
+<p>Here's an example of grabbing the text from a web article by <a href="http://facta.co.jp/" target="_blank">Facta</a>, a Japanese business magazine, and saving it as a text file, so I can add it to the list of articles in <a href="http://macaronics.com/" target="_blank">Macaronics</a>:</p>
 
-<code>>>> import urllib, text_grabber
->>> data=urllib.urlopen('http://facta.co.jp/article/201211043-print.html').read()
->>> t=text_grabber.facta_print(data)
->>> import codecs
+<code>>>> import urllib, text_grabber<br />
+>>> data=urllib.urlopen('http://facta.co.jp/article/201211043-print.html').read()<br />
+>>> t=text_grabber.facta_print(data)<br />
+>>> import codecs<br />
 >>> f=codecs.open('facta-201211043-print.txt', 'w', 'utf-8'); f.write(t); f.close()</code>
         <hr>
       </div>
