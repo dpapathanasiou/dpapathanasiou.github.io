@@ -59,19 +59,19 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-<a href="https://en.wikipedia.org/wiki/Berkeley_DB" target="_blank">BerkeleyDB (BDB)</a> is an embedded database designed for in-application datastores and small devices. At its most basic, it's a simple key-value store of byte arrays.
+<p><a href="https://en.wikipedia.org/wiki/Berkeley_DB" target="_blank">BerkeleyDB (BDB)</a> is an embedded database designed for in-application datastores and small devices. At its most basic, it's a simple key-value store of byte arrays.</p>
 
-Like <a href="http://sqlite.org/" target="_blank">sqlite</a>, the entire database is self-contained in a series of files, with no process or network port overhead. 
+<p>Like <a href="http://sqlite.org/" target="_blank">sqlite</a>, the entire database is self-contained in a series of files, with no process or network port overhead. </p>
 
-Unlike sqlite, it also has good support for managing concurrent transactions and more advanced database features such as live backups and replication.
+<p>Unlike sqlite, it also has good support for managing concurrent transactions and more advanced database features such as live backups and replication.</p>
 
-Querying is also surprisingly advanced. Beyond hashtable style key lookups, the keys themselves are indexable and searchable, and thanks to the <a href="http://docs.oracle.com/cd/E17076_01/html/programmer_reference/am_second.html" target="_blank">secondary index feature</a>, it's also possible to do complex queries within the data values themselves.
+<p>Querying is also surprisingly advanced. Beyond hashtable style key lookups, the keys themselves are indexable and searchable, and thanks to the <a href="http://docs.oracle.com/cd/E17076_01/html/programmer_reference/am_second.html" target="_blank">secondary index feature</a>, it's also possible to do complex queries within the data values themselves.</p>
 
-While it's possible to get a full-fledged relational dbms like <a href="http://raspberrypg.org/" target="_blank">PostgreSQL running on a Raspberry Pi</a>, the fact that BDB runs with minimal resources is useful in a constrained environment, especially if you have <a href="http://www.zdnet.com/raspberry-pi-extending-the-life-of-the-sd-card-7000025556/" target="_blank">disabled swap</a>, and undertaken other <a href="http://raspberrypi.stackexchange.com/a/186" target="_blank">cruel and unusual measures to preserve SD card life</a> so that your Pi can run as close to 24x7x365 as possible.
+<p>While it's possible to get a full-fledged relational dbms like <a href="http://raspberrypg.org/" target="_blank">PostgreSQL running on a Raspberry Pi</a>, the fact that BDB runs with minimal resources is useful in a constrained environment, especially if you have <a href="http://www.zdnet.com/raspberry-pi-extending-the-life-of-the-sd-card-7000025556/" target="_blank">disabled swap</a>, and undertaken other <a href="http://raspberrypi.stackexchange.com/a/186" target="_blank">cruel and unusual measures to preserve SD card life</a> so that your Pi can run as close to 24x7x365 as possible.</p>
 
-Back in 2009, I was <a href="http://www.papathanasiou.org/files/BDB_Secondary_Indices.pdf" target="_blank">using it extensively</a> on a messaging and workflow project, and I revisted that code when it came time to decide on a datastore for a new, long-running server application designed to run on a Pi.
+<p>Back in 2009, I was <a href="http://www.papathanasiou.org/files/BDB_Secondary_Indices.pdf" target="_blank">using it extensively</a> on a messaging and workflow project, and I revisted that code when it came time to decide on a datastore for a new, long-running server application designed to run on a Pi.</p>
 
-I've cleaned-up that codebase and made it available as a public repo on github: <a href="https://github.com/dpapathanasiou/pyBDB" target="_blank">https://github.com/dpapathanasiou/pyBDB</a>
+<p>I've cleaned-up that codebase and made it available as a public repo on github: <a href="https://github.com/dpapathanasiou/pyBDB" target="_blank">https://github.com/dpapathanasiou/pyBDB</a></p>
 
         <hr>
       </div>
