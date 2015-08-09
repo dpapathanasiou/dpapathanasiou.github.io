@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" | The personal web site of Denis Papathanasiou">
+    <meta name="author" content="Denis Papathanasiou">
+    <title>Go (#golang) and MongoDB using mgo</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link href="../css/my-blog.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+      <li class="sidebar-brand"><a href="../" onclick="$('#menu-close').click();" >Denis Papathanasiou</a></li>
+      <li class="sidebar-brand"><a href="../aikido.html" onclick="$('#menu-close').click();" >aikido</a></li>
+      <li class="sidebar-brand"><a href="../hardware.html" onclick="$('#menu-close').click();" >hardware</a></li>
+      <li class="sidebar-brand"><a href="../programming.html" onclick="$('#menu-close').click();" >programming</a></li>
+      <li class="sidebar-brand"><a href="../random.html" onclick="$('#menu-close').click();" >random</a></li>
+      <li class="sidebar-brand"><a href="../technology.html" onclick="$('#menu-close').click();" >technology</a></li>
+      <li class="sidebar-brand"><a href="../#contacts" onclick="$('#menu-close').click();" >contact</a></li>
+    </ul>
+  </nav>
+
+
+  <header class="intro-header" style="background-image: url('/img/source-code-bg.jpg')"> <!-- source: https://pixabay.com/en/source-code-code-programming-c-583537/ -->
+    <div class="container">
+      <div class="row">
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <div class="site-heading" style="color:#00ff00">
+	    <h1>Go (#golang) and MongoDB using mgo</h1>
+	    <hr class="small">
+	    <h2 class="subheading"></h2>
+	    <p class="post-meta"><i class="fa fa-calendar"></i> October 14, 2012</p>
+
+	  </div>
+	</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+After working in <a href="http://nodejs.org/" target="_blank">node.js</a> last year, I've <a href="http://blog.jgc.org/2012/05/to-boldly-go-where-node-man-has-gone.html" target="_blank">switched to learning Go</a> instead, and I wanted to reprise my <a href="http://denis.papathanasiou.org/?p=704" target="_blank">&quot;Node.js and MongoDB: A Simple Example&quot;</a> post in <a href="http://golang.org/" target="_blank">Go</a>.
+
+Of all the <a href="http://www.mongodb.org/display/DOCS/Drivers" target="_blank">Go drivers</a> available for mongoDB, <a href="http://labix.org/mgo" target="_blank">mgo</a> is the most advanced and well-maintained.
+
+The example on the <a href="http://labix.org/mgo" target="_blank">mgo main page</a> is easy to understand:
+
+<ol>
+<li>Create a <a href="http://golang.org/ref/spec#Struct_types" target="_blank">struct</a> which matches the <a href="http://www.mongodb.org/display/DOCS/Tutorial#Tutorial-DynamicSchema%28%22SchemaFree%22%29" target="_blank">BSON documents in the database collection</a> you want to access
+</li><li> Obtain a session using the <a href="http://go.pkgdoc.org/labix.org/v2/mgo#Dial" target-"_blank">Dial function</a>, which creates a connection object
+</li><li>Use the connection object to access a particular collection in your database:
+<ul>
+<li>Searches load documents from the database into the struct
+</li><li>Inserts and updates take data defined in a struct and create/update documents in the database
+</li></ul>
+</li></ol>
+
+So for a collection named "Person", where a typical document looks like this:
+
+<pre>{
+        "_id" : ObjectId("502fbbd6fec1300be858767e"),
+        "lastName" : "Seba",
+        "firstName" : "Jun",
+        "inserted" : ISODate("2012-08-18T15:59:18.646Z")
+}</pre>
+
+The corresponding Go struct would be:
+
+<pre>type Person struct {
+    Id         bson.ObjectId   "_id,omitempty"
+    FirstName  string          "firstName"
+    MiddleName string          "middleName,omitempty"
+    LastName   string          "lastName"
+    Inserted   time.Time       "inserted"
+}</pre>
+
+It turns out the third field in each line, the string literal tag which is normally optional in a Go struct, is <i>required</i> here, because mgo won't find those fields in the database otherwise.
+
+It's also possible to convert database results directly into <a href="http://json.org/" target="_blank">json</a>, which is useful for creating <a href="https://github.com/dpapathanasiou/go-api" target="_blank">API services</a> that output json.
+
+In that case, it's necessary to define both a bson tag and a json one, surrounded by backticks:
+
+<pre>type Person struct {
+    Id         bson.ObjectId   `bson:"_id,omitempty" json:"-"`
+    FirstName  string          `bson:"firstName" json:"firstName"`
+    MiddleName string          `bson:"middleName,omitempty" json:"middleName,omitempty"`
+    LastName   string          `bson:"lastName" json:"lastName"`
+    Inserted   time.Time       `bson:"inserted" json:"-"`
+}</pre>
+
+The json tag follows the conventions of the built-in <a href="http://golang.org/pkg/encoding/json/#Marshal" target="_blank">Go json package</a>: "-" means ignore, "omitempty" will exclude the field if its value is empty, etc.
+
+So far so good.
+
+But accessing different collections in a database means that for each one: it has its own struct defined, it has its own connection with the collection name specified, and an access function (<a href="http://go.pkgdoc.org/labix.org/v2/mgo#Collection.Find" target="_blank">Find</a>, <a href="http://go.pkgdoc.org/labix.org/v2/mgo#Collection.Insert" target="_blank">Insert</a>, <a href="http://go.pkgdoc.org/labix.org/v2/mgo#Collection.Remove" target="_blank">Remove</a>, etc.) which marshals/unmarshals those results. 
+
+And the last step in particular can lead to a lot of code repetition. 
+
+Inspired by <a href="https://groups.google.com/group/mgo-users/msg/fe1e9f1e03096729?hl=en" target="_blank">Alexander Luya's post</a> on <a href="https://groups.google.com/group/mgo-users?hl=en" target="_blank">mgo-users</a>, I've created a framework that allows for multiple access functions with a minimum of repetiton.
+
+First, this function, which creates or clones the call to <a href="http://go.pkgdoc.org/labix.org/v2/mgo#Dial" target="_blank">Dial()</a> as needed (this is very similar to what Alex posted):
+
+<pre>var (
+    mgoSession     *mgo.Session
+    databaseName = "myDB"
+)
+
+func getSession () *mgo.Session {
+    if mgoSession == nil {
+        var err error
+        mgoSession, err = mgo.Dial("localhost")
+        if err != nil {
+             panic(err) // no, not really
+        }
+    }
+    return mgoSession.Clone()
+}</pre>
+
+Next, a higher-order function which takes a collection name and an access function prepared to act on that collection:
+
+<pre>func withCollection(collection string, s func(*mgo.Collection) error) error {
+    session := getSession()
+    defer session.Close()
+    c := session.DB(databaseName).C(collection)
+    return s(c)
+}</pre>
+
+The withCollection() function takes the name of the collection, along with a function that expects the connection object to that collection, and can execute access functions on it.
+
+Here's how the "Person" collection can be searched, using the withCollection() function:
+
+<pre>func SearchPerson (q interface{}, skip int, limit int) (searchResults []Person, searchErr string) {
+    searchErr     = ""
+    searchResults = []Person{}
+    query := func(c *mgo.Collection) error {
+        fn := c.Find(q).Skip(skip).Limit(limit).All(&searchResults)
+        if limit < 0 {
+            fn = c.Find(q).Skip(skip).All(&searchResults)
+        }
+        return fn
+    }
+    search := func() error {
+        return withCollection("person", query)
+    }
+    err := search()
+    if err != nil {
+        searchErr = "Database Error"
+    }
+    return
+}</pre>
+
+The skip and limit parameters are optional in that if skip is set to zero, it is effectively asking for all the results, and, similarly, if limit is set to an integer less than zero, it is ignored in the query that gets invoked inside the withCollection() function.
+
+So with that framework in place, making a variety of different queries on the "Person" collection reduces to writing simple (often one-line) BSON queries, as in the following examples.
+
+(1) Get all people whose last name beings with a particular string:
+</pre><pre>func GetPersonByLastName (lastName string, skip int, limit int) (searchResults []Person, searchErr string) {
+    searchResults, searchErr = SearchPerson(bson.M{"lastName": bson.RegEx{"^"+lastName, "i"}}, skip, limit)
+    return
+}</pre>
+
+(2) Get all people whose last name is exactly the given string:
+<pre>func GetPersonByExactLastName (lastName string, skip int, limit int) (searchResults []Person, searchErr string) {
+    searchResults, searchErr = SearchPerson(bson.M{"lastName": lastName}, skip, limit)
+    return
+}</pre>
+
+(3) Find people whose first and last names being with the particular strings:
+<pre>func GetPersonByFullName (lastName string, firstName string, skip int, limit int) (searchResults []Person, searchErr string) {
+    searchResults, searchErr = SearchPerson(bson.M{
+        "lastName": bson.RegEx{"^"+lastName, "i"},
+        "firstName": bson.RegEx{"^"+firstName, "i"}}, skip, limit)
+    return
+}</pre>
+
+(4) Find people whose first and last names match with first and last names exactly:
+<pre>func GetPersonByExactFullName (lastName string, firstName string, skip int, limit int) (searchResults []Person, searchErr string) {
+    searchResults, searchErr = SearchPerson(bson.M{"lastName": lastName, "firstName": firstName}, skip, limit)
+    return
+}</pre>
+
+et. cetera.
+
+As far as code repetition goes, however, this framework is not that efficient in that each collection requires its own Search[Collection]() function, where the only difference among the different functions is the type of the searchResults variable.
+
+It would be tempting to write something like this:
+
+<pre>func Search (collectionName string, q interface{}, skip int, limit int) (searchResults []interface{}, searchErr string) {
+    searchErr = ""
+    query := func(c *mgo.Collection) error {
+        fn := c.Find(q).Skip(skip).Limit(limit).All(&searchResults)
+        if limit < 0 {
+            fn = c.Find(q).Skip(skip).All(&searchResults)
+        }
+        return fn
+    }
+    search := func() error {
+        return withCollection(collectionName, query)
+    }
+    err := search()
+    if err != nil {
+        searchErr = "Database Error"
+    }
+    return
+}</pre>
+
+Except this is where Go's strong typing gets in the way: <a href="https://groups.google.com/group/mgo-users/msg/c6226894a33e95d7?hl=en" target="_blank">&quot;there's no magic that would turn an interface{} into a Person&quot;</a>, and so each Search[Collection]() function has to be written separately.</pre>
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+	<a name="contacts"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <ul class="list-inline text-center">
+	    <li>
+	      <a href="mailto:denis@papathanasiou.org">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	    <li>
+	      <a href="https://github.com/dpapathanasiou">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	  </ul>
+	</div>
+      </div>
+      <div class="row">
+	<a name="license"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <p class="copyright text-muted">
+	    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> &nbsp;
+	    This site's content is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons (BY-NC-SA 4.0)</a>
+	  </p>
+	</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="../js/my-blog.min.js"></script>
+  
+</body>
+</html>
+
+

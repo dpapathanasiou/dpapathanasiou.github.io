@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" | The personal web site of Denis Papathanasiou">
+    <meta name="author" content="Denis Papathanasiou">
+    <title>State machines in Go (#golang)</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link href="../css/my-blog.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+      <li class="sidebar-brand"><a href="../" onclick="$('#menu-close').click();" >Denis Papathanasiou</a></li>
+      <li class="sidebar-brand"><a href="../aikido.html" onclick="$('#menu-close').click();" >aikido</a></li>
+      <li class="sidebar-brand"><a href="../hardware.html" onclick="$('#menu-close').click();" >hardware</a></li>
+      <li class="sidebar-brand"><a href="../programming.html" onclick="$('#menu-close').click();" >programming</a></li>
+      <li class="sidebar-brand"><a href="../random.html" onclick="$('#menu-close').click();" >random</a></li>
+      <li class="sidebar-brand"><a href="../technology.html" onclick="$('#menu-close').click();" >technology</a></li>
+      <li class="sidebar-brand"><a href="../#contacts" onclick="$('#menu-close').click();" >contact</a></li>
+    </ul>
+  </nav>
+
+
+  <header class="intro-header" style="background-image: url('/img/source-code-bg.jpg')"> <!-- source: https://pixabay.com/en/source-code-code-programming-c-583537/ -->
+    <div class="container">
+      <div class="row">
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <div class="site-heading" style="color:#00ff00">
+	    <h1>State machines in Go (#golang)</h1>
+	    <hr class="small">
+	    <h2 class="subheading"></h2>
+	    <p class="post-meta"><i class="fa fa-calendar"></i> February 10, 2013</p>
+
+	  </div>
+	</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+I've been rewriting critical server components that were originally written in <a href="http://python.org/" target="_blank">Python</a> to use <a href="http://golang.org/" target="_blank">Go</a> instead. Unlike Python, which is interpreted and uses a <a href="http://docs.python.org/release/2.5.2/api/threads.html" target="_blank">global lock because the interpreter is not thread-safe</a>, Go has built-in support for concurrency, and is statically compiled.
+
+One of the first things I tackled was implementing a <a href="http://en.wikipedia.org/wiki/State_machine" target="_blank">state machine</a>. The <a href="http://denis.papathanasiou.org/?p=747" target="_blank">Python version</a> was based on <a href="http://www.ibm.com/developerworks/library/l-python-state/index.html" target="_blank">this article by David Mertz</a>.
+
+Mertz uses an object oriented approach, defining a class with both data and methods. His code, syntax aside, will be familiar to anyone who has worked with objects in C++, C#, and Java.
+
+Go, however, does not provide a mechanism for coupling methods to specific data structures. Instead, Go allows you to <a href="http://golangtutorials.blogspot.com/2011/06/structs-in-go-instead-of-classes-in.html" target="_blank">associate methods with data structures</a>, so that any method can be applied to any struct.
+
+It's a model which is closer to <a href="http://userpage.fu-berlin.de/~ram/pub/pub_jf47ht81Ht/doc_kay_oop_en" target="_blank">what Alan Kay meant</a> when he defined the term object oriented in the first place.
+
+With that in mind, here's how I originally wrote the state machine class as a Go struct:
+
+<pre>type Machine struct {
+    Handlers   map[string]func(interface{}) (string, interface{})
+    StartState string
+    EndStates  map[string]bool
+}</pre>
+
+Just as in Mertz's definition, Handlers is a map whose keys are name strings, and whose values are functions which accept a "cargo" value, and return a next state name string, along with the updated cargo value.
+
+Go treats functions as first-class objects, so storing and passing them from state to state works exactly as it does in Python.
+
+The only change I made was in the end state list: whereas Mertz used a list of strings, I used a map, since there's no fast equivalent of detecting presence in a list (in Go, the only way to do it would be to iterate through the entire list of strings until or unless a match is found).
+
+Since the handler function signature is a little unwieldy, I created a <a href="http://www.laktek.com/2012/02/23/learning-go-functions/" target="_blank">user-defined function type</a> for it:
+
+<pre>type Handler func(interface{}) (string, interface{})
+
+type Machine struct {
+    Handlers   map[string]Handler
+    StartState string
+    EndStates  map[string]bool
+}</pre>
+
+All that leaves is the definition of the methods associated with the Machine struct. 
+
+The first two provide a way to define which handler function is associated with which name string, and which name strings constitute end states:
+
+<pre>func (machine *Machine) AddState(handlerName string, handlerFn Handler) {
+    machine.Handlers[handlerName] = handlerFn
+}
+
+func (machine *Machine) AddEndState(endState string) {
+    machine.EndStates[endState] = true
+}</pre>
+
+It's worth noting that since EndStates is a map (or a list, in Mertz's original), it's possible to have more than one state terminate processing.
+
+The final method is the one which executes the state machine, by applying the appropriate handler function to the cargo value, stopping when an end state has been reached.
+
+Since the set of functions are stored as first-class objects in a map, looking them up based on their names and invoking them is trivial:
+
+<pre>func (machine *Machine) Execute(cargo interface{}) {
+    if handler, present := machine.Handlers[machine.StartState]; present {
+        for {
+            nextState, nextCargo := handler(cargo)
+            _, finished := machine.EndStates[nextState]
+            if finished {
+                break
+            } else {
+                handler, present = machine.Handlers[nextState]
+                cargo = nextCargo
+            }
+        }
+    }
+}</pre>
+
+The only possible fly in the ointment is Go's strong typing, since the type of the cargo value in the handler function signature needs to be specified. 
+
+By using the generic interface{} as the type, however, all the handler functions need to do is invoke a <a href="http://golang.org/ref/spec#Type_assertions" target="_blank">type assertion</a> on the incoming cargo value, and they can handle any data (the <a href="https://github.com/dpapathanasiou/go-statemachine/blob/master/statemachine-test.go" target="_blank">test example</a> uses a float for the cargo, but it can be any data type, even user-defined structs). 
+
+The complete state machine is <a href="https://github.com/dpapathanasiou/go-statemachine" target="_blank">available as a Go package</a>.
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+	<a name="contacts"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <ul class="list-inline text-center">
+	    <li>
+	      <a href="mailto:denis@papathanasiou.org">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	    <li>
+	      <a href="https://github.com/dpapathanasiou">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	  </ul>
+	</div>
+      </div>
+      <div class="row">
+	<a name="license"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <p class="copyright text-muted">
+	    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> &nbsp;
+	    This site's content is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons (BY-NC-SA 4.0)</a>
+	  </p>
+	</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="../js/my-blog.min.js"></script>
+  
+</body>
+</html>
+
+

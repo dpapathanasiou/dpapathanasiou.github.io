@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" | The personal web site of Denis Papathanasiou">
+    <meta name="author" content="Denis Papathanasiou">
+    <title>Simple Social Media "Share" Buttons</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link href="../css/my-blog.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+      <li class="sidebar-brand"><a href="../" onclick="$('#menu-close').click();" >Denis Papathanasiou</a></li>
+      <li class="sidebar-brand"><a href="../aikido.html" onclick="$('#menu-close').click();" >aikido</a></li>
+      <li class="sidebar-brand"><a href="../hardware.html" onclick="$('#menu-close').click();" >hardware</a></li>
+      <li class="sidebar-brand"><a href="../programming.html" onclick="$('#menu-close').click();" >programming</a></li>
+      <li class="sidebar-brand"><a href="../random.html" onclick="$('#menu-close').click();" >random</a></li>
+      <li class="sidebar-brand"><a href="../technology.html" onclick="$('#menu-close').click();" >technology</a></li>
+      <li class="sidebar-brand"><a href="../#contacts" onclick="$('#menu-close').click();" >contact</a></li>
+    </ul>
+  </nav>
+
+
+  <header class="intro-header" style="background-image: url('/img/source-code-bg.jpg')"> <!-- source: https://pixabay.com/en/source-code-code-programming-c-583537/ -->
+    <div class="container">
+      <div class="row">
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <div class="site-heading" style="color:#00ff00">
+	    <h1>Simple Social Media "Share" Buttons</h1>
+	    <hr class="small">
+	    <h2 class="subheading"></h2>
+	    <p class="post-meta"><i class="fa fa-calendar"></i> December 18, 2012</p>
+
+	  </div>
+	</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+I've recently included social media "share" buttons both here on this site, and at <a href="http://macaronics.com/" target="_blank">macaronics.com</a> (whether or not they serve any useful purpose is <a href="http://www.reddit.com/r/web_design/comments/ay5du/ask_rweb_design_are_share_this_buttons_a_waste_of/" target="_blank">another question entirely</a>).
+
+A problem with implementing them, though, is that each site wants you to include a boatload of javascript along with the button images, and you also have to set the button within an iframe or other weird DOM construct foreign to your page layout.
+
+Getting each of the buttons to line up in a simple row is so tricky, in fact, that a bunch of <a href="http://sharethis.com/" target="_blank">third party</a> <a href="http://www.addthis.com/" target="_blank">services</a> have cropped up to do the work for you.
+
+But if you don't care about having the current number of "likes" or "shares" displayed, there is <a href="https://gist.github.com/4329613" target="_blank">a simpler way</a>.
+
+My technique is based on <a href="http://stackoverflow.com/a/9321347" target="_blank">this approach</a> by <a href="http://stackoverflow.com/users/102896/steve-wortham" target="_blank">Steve Wortham</a> and <a href="http://www.reddit.com/buttons/" target="_blank">reddit's method</a> for using javascript within the link to identify the window.location and use that to build the share link dynamically.
+
+For the button images, I used <a href="https://www.fatcow.com/free-icons" target="_blank">Fatcow's Free Icons</a> for Facebook, Twitter, LinkedIn, and Google Plus.
+
+<a href="http://www.reddit.com/buttons/" target="_blank">Reddit</a> and <a href="http://pinterest.com/" target="_blank">Pinterest</a> both provide button icons (though for Pinterest I had to <a href="http://passets-ec.pinterest.com/images/about/logos/Pinterest_Favicon.png" target="_blank">download the png logo file</a> and scale it down to the same size as the others).
+
+Except for reddit, none of the sites offered hosting (without involving all the extraneous javascript includes I didn't want in the first place), so I used <a href="http://www.imgur.com/" target="_blank">Imgur</a>.
+
+You can see the results here:
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+	<a name="contacts"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <ul class="list-inline text-center">
+	    <li>
+	      <a href="mailto:denis@papathanasiou.org">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	    <li>
+	      <a href="https://github.com/dpapathanasiou">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	  </ul>
+	</div>
+      </div>
+      <div class="row">
+	<a name="license"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <p class="copyright text-muted">
+	    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> &nbsp;
+	    This site's content is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons (BY-NC-SA 4.0)</a>
+	  </p>
+	</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="../js/my-blog.min.js"></script>
+  
+</body>
+</html>
+
+

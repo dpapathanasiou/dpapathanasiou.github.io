@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" | The personal web site of Denis Papathanasiou">
+    <meta name="author" content="Denis Papathanasiou">
+    <title>Quoted Name Searching in Pyparsing with searchparser.py</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link href="../css/my-blog.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+      <li class="sidebar-brand"><a href="../" onclick="$('#menu-close').click();" >Denis Papathanasiou</a></li>
+      <li class="sidebar-brand"><a href="../aikido.html" onclick="$('#menu-close').click();" >aikido</a></li>
+      <li class="sidebar-brand"><a href="../hardware.html" onclick="$('#menu-close').click();" >hardware</a></li>
+      <li class="sidebar-brand"><a href="../programming.html" onclick="$('#menu-close').click();" >programming</a></li>
+      <li class="sidebar-brand"><a href="../random.html" onclick="$('#menu-close').click();" >random</a></li>
+      <li class="sidebar-brand"><a href="../technology.html" onclick="$('#menu-close').click();" >technology</a></li>
+      <li class="sidebar-brand"><a href="../#contacts" onclick="$('#menu-close').click();" >contact</a></li>
+    </ul>
+  </nav>
+
+
+  <header class="intro-header" style="background-image: url('/img/source-code-bg.jpg')"> <!-- source: https://pixabay.com/en/source-code-code-programming-c-583537/ -->
+    <div class="container">
+      <div class="row">
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <div class="site-heading" style="color:#00ff00">
+	    <h1>Quoted Name Searching in Pyparsing with searchparser.py</h1>
+	    <hr class="small">
+	    <h2 class="subheading"></h2>
+	    <p class="post-meta"><i class="fa fa-calendar"></i> September 17, 2010</p>
+
+	  </div>
+	</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+The <a href='http://pyparsing.wikispaces.com/file/view/searchparser.py' target='_blank'>searchparser.py</a> module has a flaw when it comes to quoted phrases with punctuation.
+
+Searching for something like this:
+
+"C. Montgomery Burns, Esq."
+
+results in a nasty stacktrace:
+
+<pre>
+Traceback (most recent call last):
+  File "searchparser.py", line 302, in <module>
+    if ParserTest().Test():
+  File "searchparser.py", line 289, in Test
+    r = self.Parse(item)
+  File "searchparser.py", line 170, in Parse
+    return self.evaluate(self._parser(query)[0])
+  File "/var/lib/python-support/python2.5/pyparsing.py", line 1049, in parseString
+    loc, tokens = self._parse( instring, 0 )
+  File "/var/lib/python-support/python2.5/pyparsing.py", line 925, in _parseNoCache
+    loc,tokens = self.parseImpl( instring, preloc, doActions )
+  File "/var/lib/python-support/python2.5/pyparsing.py", line 2560, in parseImpl
+    return self.expr._parse( instring, loc, doActions, callPreParse=False )
+  File "/var/lib/python-support/python2.5/pyparsing.py", line 925, in _parseNoCache
+    loc,tokens = self.parseImpl( instring, preloc, doActions )
+  File "/var/lib/python-support/python2.5/pyparsing.py", line 2431, in parseImpl
+    raise maxException
+pyparsing.ParseException: Expected """ (at char 2), (line:1, col:3)
+</pre>
+
+The reason is that words in searchparser.py are defined as consisting of just letters and numbers (or <a href='http://structure.usc.edu/pyparsing/pyparsing-module.html#alphanums' target='_blank'>alphanums</a>, in pyparsing-speak) in lines 94 and 95: 
+
+<pre>Word(alphanums)</pre>
+
+The solution is to define a string which contains all the possible punctuation characters to expect in a quoted search string, and include it in the parser grammar for word.
+
+For example, for people's names, the likely punctuation characters to expect are:
+
+<pre>
+punctuation = ",.'`&-"
+</pre>
+
+So, using that definition at the start of the <tt>parser(self)</tt> method, we edit the lines for operatorWord() to look like this:
+
+<pre>
+operatorWord = Group(Combine(Word(alphanums+punctuation) + Suppress('*'))).setResultsName('wordwildcard') | \
+                    Group(Word(alphanums+punctuation)).setResultsName('word')
+</pre>
+
+With that change, we can find Monty Burns using his exact name, periods and commas included.
+
+<center>
+<object width="425" height="348"><param name="movie" value="http://www.youtube.com/v/YKUOB8MN4Kc?fs=1&amp;hl=en_US&amp;rel=0&amp;border=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/YKUOB8MN4Kc?fs=1&amp;hl=en_US&amp;rel=0&amp;border=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="348"></embed></object>
+</center>
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+	<a name="contacts"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <ul class="list-inline text-center">
+	    <li>
+	      <a href="mailto:denis@papathanasiou.org">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	    <li>
+	      <a href="https://github.com/dpapathanasiou">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	  </ul>
+	</div>
+      </div>
+      <div class="row">
+	<a name="license"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <p class="copyright text-muted">
+	    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> &nbsp;
+	    This site's content is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons (BY-NC-SA 4.0)</a>
+	  </p>
+	</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="../js/my-blog.min.js"></script>
+  
+</body>
+</html>
+
+

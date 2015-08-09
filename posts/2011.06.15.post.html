@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" | The personal web site of Denis Papathanasiou">
+    <meta name="author" content="Denis Papathanasiou">
+    <title>Illustrated ebooks with epub: using the svg image element</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link href="../css/my-blog.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+      <li class="sidebar-brand"><a href="../" onclick="$('#menu-close').click();" >Denis Papathanasiou</a></li>
+      <li class="sidebar-brand"><a href="../aikido.html" onclick="$('#menu-close').click();" >aikido</a></li>
+      <li class="sidebar-brand"><a href="../hardware.html" onclick="$('#menu-close').click();" >hardware</a></li>
+      <li class="sidebar-brand"><a href="../programming.html" onclick="$('#menu-close').click();" >programming</a></li>
+      <li class="sidebar-brand"><a href="../random.html" onclick="$('#menu-close').click();" >random</a></li>
+      <li class="sidebar-brand"><a href="../technology.html" onclick="$('#menu-close').click();" >technology</a></li>
+      <li class="sidebar-brand"><a href="../#contacts" onclick="$('#menu-close').click();" >contact</a></li>
+    </ul>
+  </nav>
+
+
+  <header class="intro-header" style="background-image: url('/img/source-code-bg.jpg')"> <!-- source: https://pixabay.com/en/source-code-code-programming-c-583537/ -->
+    <div class="container">
+      <div class="row">
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <div class="site-heading" style="color:#00ff00">
+	    <h1>Illustrated ebooks with epub: using the svg image element</h1>
+	    <hr class="small">
+	    <h2 class="subheading"></h2>
+	    <p class="post-meta"><i class="fa fa-calendar"></i> June 15, 2011</p>
+
+	  </div>
+	</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+All things being equal, the <a href="http://idpf.org/epub" target="_blank">epub format</a> is preferable to <a href="http://en.wikipedia.org/wiki/Portable_Document_Format" target="_blank">pdf</a> for reading on devices like the iPad, Nook, Sony, Kobo, and <a href="https://ebookburn.com/faq.html#other_epub" target=_blank">other dedicated e-readers</a>.
+
+But for some types of books (such as manga, comics, or graphic novels), epub doesn't seem to be able to handle large images that should fill the screen.
+
+Apple has gone so far as to create <a href="http://www.teleread.com/paul-biba/apples-new-fixed-layout-for-producing-illustrated-ebooks-a-webinar/" target="_bank">its own fixed layout format</a> for such ebooks.
+
+It is possible, though, to stick with epub and get perfect results for illustrated ebooks, using the forgotten (or perhaps simply overlooked) <a href="http://apike.ca/prog_svg_images.html" target="_blank">svg image element</a>.
+
+Here's a peek under the hood of how we do it at <a href="https://ebookburn.com/" target="_blank">eBookBurn.com</a>, as part of our new <a href="https://ebookburn.com/help.html#manga" target="_blank">illustrated ebook publishing</a> feature.
+
+This is an example of the markup to use in your epub's xhtml files for each image:
+<code>
+&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 592 900" preserveAspectRatio="xMidYMid meet"&gt;
+  &lt;image width="592" height="900" xlink:href="images/page01.jpeg" /&gt;
+&lt;/svg&gt;
+</code>
+
+What this markup does is take a JPEG image sized 592 pixels wide by 900 pixels tall, and frame it in the center of a 592x900 svg element.
+
+It turns out that 592x900 is the right size and aspect ratio for "standard-sized" six inch e-ink screens found on the regular <a href="http://www.barnesandnoble.com/nook/index.asp" target="_blank">Nook</a>, and <a href="http://ebookstore.sony.com/reader/" target="_blank">Sony Reader</a>.
+
+So why use svg at all? 
+
+Wouldn't it be simpler to define it with the plain img tag (as <a href="http://ralphsnart.blogspot.com/2010/02/epub-comic-book-template.html" target="_blank">this epub template does</a>), like this?
+<code>
+&lt;img src="images/page01.jpeg" width="592" height="900" alt="Page 1"/&gt;
+</code>
+
+Unfortunately, many devices, such as the <a href="http://www.apple.com/ipad/" target="_blank">iPad</a> and the <a href="http://www.barnesandnoble.com/nookcolor/index.asp" target="_blank">Nook Color</a>, have screens <i>larger</i> than six inches.
+
+So on those devices, using the plain img tag in your epub's xhtml files leaves an embarrassing whitespace gap, from where the image stops to where the actual screen ends.
+
+The svg element shown earlier, though, is different: it stretches the image to fill the entire screen, while preserving the aspect ratio.
+
+It's also important to note that 592 width and 900 height specified within the svg and image elements should not be thought of as pixel sizes, since no units are defined, but as a width-to-height ratio.
+
+So any image with the same aspect ratio as 592x900 will work well, regardless of its actual size. Scaling up to larger screens, though, also means the dpi count should be reasonably high, at least 72 dpi (and more for images whose base size is smaller than 592x900 pixels).
+
+For most devices, that's enough, but some e-readers insist on adding margins and other padding to each page, so it's helpful to define this in the xhtml file's head block:
+<code>
+&lt;style type="text/css"&gt;
+@page { margin: 0.000000pt; padding: 0.000000pt; }
+&lt;/style&gt;
+</code>
+
+And these css classes in the stylesheet:
+<code>
+.svg_outer {
+    display: block;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    text-align: left;
+}</code><code>
+.svg_inner {
+    display: block;
+    text-align: center;
+}
+</code>
+
+So the final xhtml for each page image looks like this:
+<code>
+&lt;div class="svg_outer"&gt;
+  &lt;div class="svg_inner"&gt;
+&lt;svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 592 900" preserveAspectRatio="xMidYMid meet"&gt;
+  &lt;image width="592" height="900" xlink:href="images/page01.jpeg" /&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</code>
+
+Just repeat that pattern for every image in book, for every chapter that contains full-page illustrations.
+<hr />
+<p>
+<strong>Update</strong>, May 1, 2012: <a href="http://moriahjovan.com" target="_blank">Moriah Jovan</a> has been kind enough to provide sample epub files created using this technique:
+</p>
+
+<ul>
+<li><a href="http://moriahjovan.com/talesofdunham/download/1/">The Proviso &mdash; Vignettes &amp; Outtakes</a> epub file download </li>
+<li><a href="http://moriahjovan.com/talesofdunham/download/2/">Stay &mdash; Vignettes &amp; Outtakes</a> epub file download</li>
+</ul>
+
+<hr />
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+	<a name="contacts"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <ul class="list-inline text-center">
+	    <li>
+	      <a href="mailto:denis@papathanasiou.org">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	    <li>
+	      <a href="https://github.com/dpapathanasiou">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	  </ul>
+	</div>
+      </div>
+      <div class="row">
+	<a name="license"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <p class="copyright text-muted">
+	    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> &nbsp;
+	    This site's content is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons (BY-NC-SA 4.0)</a>
+	  </p>
+	</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="../js/my-blog.min.js"></script>
+  
+</body>
+</html>
+
+
