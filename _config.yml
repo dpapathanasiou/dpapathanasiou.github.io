@@ -1,7 +1,7 @@
-gems:
-  - jekyll-redirect-from
 ---
 redirect_from:
   - /2015/05/30/piscan-an-open-source-version-of-the-amazon-dash-button-using-a-raspberry-pi/
   - /posts/2015.05.30.post.html
 ---
+gems:
+  - jekyll-redirect-from
