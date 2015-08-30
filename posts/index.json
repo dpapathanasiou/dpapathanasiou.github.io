@@ -533,6 +533,7 @@
             "image_src": "https://commons.wikimedia.org/wiki/File:Raspberry_Pi_boxed.jpg",
             "subtitle": "An unofficial ARM tarball for the Pi",
             "tags": [
+                "Hardware",
                 "Programming",
                 "Technology"
             ],
