@@ -526,6 +526,17 @@
                 "Technology"
             ],
             "title": "DSL processing in Scala"
+        },
+        "20150830": {
+            "color": "#ffffff",
+            "image": "/img/RaspberryPi-bg.jpg",
+            "image_src": "https://commons.wikimedia.org/wiki/File:Raspberry_Pi_boxed.jpg",
+            "subtitle": "An unofficial ARM tarball for the Pi",
+            "tags": [
+                "Programming",
+                "Technology"
+            ],
+            "title": "Go version 1.5 on the Raspberry Pi"
         }
     },
     "tags": {
