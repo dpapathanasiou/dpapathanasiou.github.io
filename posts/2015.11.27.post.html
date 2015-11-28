@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DIY Raspberry Pi Door Monitor | The personal web site of Denis Papathanasiou">
+    <meta name="author" content="Denis Papathanasiou">
+    <title>Open Sesame Pi</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link href="../css/my-blog.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+      <li class="sidebar-brand"><a href="../" onclick="$('#menu-close').click();" >Denis Papathanasiou</a></li>
+      <li class="sidebar-brand"><a href="../aikido.html" onclick="$('#menu-close').click();" >aikido</a></li>
+      <li class="sidebar-brand"><a href="../hardware.html" onclick="$('#menu-close').click();" >hardware</a></li>
+      <li class="sidebar-brand"><a href="../programming.html" onclick="$('#menu-close').click();" >programming</a></li>
+      <li class="sidebar-brand"><a href="../random.html" onclick="$('#menu-close').click();" >random</a></li>
+      <li class="sidebar-brand"><a href="../technology.html" onclick="$('#menu-close').click();" >technology</a></li>
+      <li class="sidebar-brand"><a href="../#contacts" onclick="$('#menu-close').click();" >contact</a></li>
+    </ul>
+  </nav>
+
+
+  <header class="intro-header" style="background-image: url('/img/opensesamepi.bg.jpg')"> <!-- source: https://commons.wikimedia.org/wiki/File:Half-open_door_to_Heaven_%284761478827%29.jpg -->
+    <div class="container">
+      <div class="row">
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <div class="site-heading" style="color:#000080">
+	    <h1>Open Sesame Pi</h1>
+	    <hr class="small">
+	    <h2 class="subheading">DIY Raspberry Pi Door Monitor</h2>
+	    <p class="post-meta"><i class="fa fa-calendar"></i> November 27, 2015</p>
+
+	  </div>
+	</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<p><a href="http://fritzing.org/" target="_blank">Fritzing</a> has an amazing <a href="https://github.com/fritzing/fritzing-app" target="_blank">desktop application</a> which functions as a virtual breadboard.</p>
+
+<p>Browsing the list of components, I came across something unusual, a magnet-based electrical switch called a <a href="https://en.wikipedia.org/wiki/Reed_switch" target="_blank">reed switch</a>. According to that wikipedia article, one of its more common applications is "to detect the opening of a door, when used as a proximity switch for a burglar alarm."</p>
+
+<p>Looking them up on various electronics catalogs, I found several cheap units pre-molded for mounting on doors.</p>
+
+<p>Could I connect one to a Raspberry Pi as a cheap door monitor?</p>
+
+<p>Yes, there were several examples of <a href="http://rocode.com/sensors/#ReedSwitch" target="_blank">how to use a reed switch with the Pi's GPIO pins</a>, and thanks to the <a href="https://pypi.python.org/pypi/RPi.GPIO" target="_blank">RPi.GPIO library</a>, programming a reaction when the switch (door) opens and closes was simple.</p>
+
+<p><h3>Pull Requests Welcome!</h3></p>
+
+<p>My <a href="https://github.com/Banrai/OpenSesamePi" target="_blank">current version</a> just sends an email alert, but it's open-source and <a href="https://github.com/Banrai/OpenSesamePi#extensibility" target="_blank">can be extended</a> to do more interesting things.</p>
+
+<p><blockquote class="imgur-embed-pub" lang="en" data-id="a/AHRkt"><a href="//imgur.com/a/AHRkt">OpenSesamePi on Imgur</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script></p>
+
+<p>Unlike the <a href="http://denis.papathanasiou.org/posts/2015.05.30.post.html">PiScan</a>, which needed no soldering, there is a <a href="https://github.com/Banrai/OpenSesamePi#physical" target="_blank">small amount of wiring</a> needed here, but it's not very difficult.</p>
+
+<p>Also, it's not very memory or process-intensive, so it can co-exist quite happily with an existing Pi already running other software (I use mine in double duty with PiScan, for example, and both run together nicely).</p>
+
+<p>The Pi may be overkill for something so simple, actually, which is why I'm also researching a version based on the <a href="https://en.wikipedia.org/wiki/ESP8266" target="_blank">ESP8266 wifi microcontroller</a> connected to an <a href="https://www.arduino.cc/" target="_blank">Arduino</a> instead. The newly-announced <a href="https://www.raspberrypi.org/blog/raspberry-pi-zero/" target="_blank">Raspberry Pi Zero</a> may also be a good fit for this application.</p>
+
+<p><h3>Build Your Own</h3></p>
+
+<p>The software is available on github: <a href="https://github.com/Banrai/OpenSesamePi" target="_blank">https://github.com/Banrai/OpenSesamePi</a></p>
+
+<p>The hardware is also simple, with a little bit of soldering to extend the reach of the reed switch wires, and attach a small resistor.</p>
+
+<p>This parts list has two links for each item, the first is an affiliate link, which is a small way of supporting me to continue this work, along with a non-affiliate version underneath.</p>
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B009SQQF9C/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B009SQQF9C&amp;linkCode=as2&amp;tag=denispapath-20&amp;linkId=6VXFZWFEEFXVJR27">Raspberry Pi Model B</a><img style="border: none !important; margin: 0px !important;" src="http://ir-na.amazon-adsystem.com/e/ir?t=denispapath-20&amp;l=as2&amp;o=1&amp;a=B009SQQF9C" alt="" width="1" height="1" border="0" /><br />
+<a href="http://www.amazon.com/gp/product/B009SQQF9C" target="_blank">http://www.amazon.com/gp/product/B009SQQF9C</a></li>
+</ul>
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B00HR8CT8E/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00HR8CT8E&linkCode=as2&tag=denispapath-20&linkId=JC3TCVFEJLU4SCZR">MC 38 Wired Door Sensor Magnetic Switch</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=denispapath-20&l=as2&o=1&a=B00HR8CT8E" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> (this is the reed switch, in a plastic case for mounting on door frames)<br />
+<a href="http://www.amazon.com/gp/product/B00HR8CT8E" target="_blank">http://www.amazon.com/gp/product/B00HR8CT8E</a></li>
+</ul>
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B00IVPU7KE/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00IVPU7KE&amp;linkCode=as2&amp;tag=denispapath-20&amp;linkId=EZW4LKENMBRZOIYR">Micro SDHC with Adapter 16GB</a><img style="border: none !important; margin: 0px !important;" src="http://ir-na.amazon-adsystem.com/e/ir?t=denispapath-20&amp;l=as2&amp;o=1&amp;a=B00IVPU7KE" alt="" width="1" height="1" border="0" /><br />
+<a href="http://www.amazon.com/gp/product/B00IVPU7KE" target="_blank">http://www.amazon.com/gp/product/B00IVPU7KE</a></li>
+</ul>
+<ul>
+  <li><a rel="nofollow" href="http://www.amazon.com/gp/product/B00M5WLZDW/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00M5WLZDW&linkCode=as2&tag=denispapath-20&linkId=2X6OX3ITUBLXO7SD">Breadboard Jumper Wires</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=denispapath-20&l=as2&o=1&a=B00M5WLZDW" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> (these are very useful for testing on a breadboard, as well as connecting to the reed switch wires in the final assembly)<br />
+    <a href="http://www.amazon.com/gp/product/B00M5WLZDW" target="_blank">http://www.amazon.com/gp/product/B00M5WLZDW</a>
+  </li>
+</ul>
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B00FWMEFES/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00FWMEFES&amp;linkCode=as2&amp;tag=denispapath-20&amp;linkId=SCFCF3GDICSWXAR5">Raspberry Pi Wifi Dongle Adapter</a><img style="border: none !important; margin: 0px !important;" src="http://ir-na.amazon-adsystem.com/e/ir?t=denispapath-20&amp;l=as2&amp;o=1&amp;a=B00FWMEFES" alt="" width="1" height="1" border="0" /> (optional: the current trigger sends an email alert, which requires internet connectivity)<br />
+<a href="http://www.amazon.com/gp/product/B00FWMEFES" target="_blank">http://www.amazon.com/gp/product/B00FWMEFES</a></li>
+</ul>
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B00LSEOTYK/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00LSEOTYK&amp;linkCode=as2&amp;tag=denispapath-20&amp;linkId=QDJASUQH25M3SG2A">Raspberry Pi B+ Power Supply (5v 2A) &#8211; USA</a><img style="border: none !important; margin: 0px !important;" src="http://ir-na.amazon-adsystem.com/e/ir?t=denispapath-20&amp;l=as2&amp;o=1&amp;a=B00LSEOTYK" alt="" width="1" height="1" border="0" /> (optional: I like a dedicated power supply since I&#8217;ve mounted mine to the wall)<br />
+<a href="http://www.amazon.com/gp/product/B00LSEOTYK" target="_blank">http://www.amazon.com/gp/product/B00LSEOTYK</a></li>
+</ul>
+
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+	<a name="contacts"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <ul class="list-inline text-center">
+	    <li>
+	      <a href="mailto:denis@papathanasiou.org">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	    <li>
+	      <a href="https://github.com/dpapathanasiou">
+		<span class="fa-stack fa-lg">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+		</span>
+	      </a>
+	    </li>
+	  </ul>
+	</div>
+      </div>
+      <div class="row">
+	<a name="license"></a>
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	  <p class="copyright text-muted">
+	    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> &nbsp;
+	    This site's content is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons (BY-NC-SA 4.0)</a>
+	  </p>
+	</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="../js/my-blog.min.js"></script>
+  
+</body>
+</html>
+
+

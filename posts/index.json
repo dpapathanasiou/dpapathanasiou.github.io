@@ -538,6 +538,18 @@
                 "Technology"
             ],
             "title": "Go version 1.5 on the Raspberry Pi"
+        },
+        "20151127": {
+            "color": "#000080",
+            "image": "/img/opensesamepi.bg.jpg",
+            "image_src": "https://commons.wikimedia.org/wiki/File:Half-open_door_to_Heaven_%284761478827%29.jpg",
+            "subtitle": "DIY Raspberry Pi Door Monitor",
+            "tags": [
+                "Hardware",
+                "Programming",
+                "Technology"
+            ],
+            "title": "Open Sesame Pi"
         }
     },
     "tags": {
