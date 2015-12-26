@@ -539,6 +539,17 @@
             ],
             "title": "Go version 1.5 on the Raspberry Pi"
         },
+	"20151226": {
+            "color": "#ff6c02",
+            "image": "/img/X11-120cpu.jpg",
+            "image_src": "https://commons.wikimedia.org/wiki/File:X11-120cpu.jpg",
+            "subtitle": "Apples and Oranges?",
+            "tags": [
+                "Programming",
+                "Technology"
+            ],
+            "title": "Go Concurrency versus C and pthreads"
+        },
         "20151127": {
             "color": "#000080",
             "image": "/img/opensesamepi.bg.jpg",
