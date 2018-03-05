@@ -1,176 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="All the Pieces Matter | The personal web site of Denis Papathanasiou">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="The personal web site of Denis Papathanasiou">
     <meta name="author" content="Denis Papathanasiou">
+    <link rel="icon" href="/img/favicon.ico">
     <title>Denis Papathanasiou</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/sticky-footer.css" rel="stylesheet">
+  </head>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <link href="/css/my-blog.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-
-  <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
-  <nav id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-      <li class="sidebar-brand"><a href="/" onclick="$('#menu-close').click();" >Denis Papathanasiou</a></li>
-      <li class="sidebar-brand"><a href="/aikido.html" onclick="$('#menu-close').click();" >aikido</a></li>
-      <li class="sidebar-brand"><a href="/hardware.html" onclick="$('#menu-close').click();" >hardware</a></li>
-      <li class="sidebar-brand"><a href="/programming.html" onclick="$('#menu-close').click();" >programming</a></li>
-      <li class="sidebar-brand"><a href="/random.html" onclick="$('#menu-close').click();" >random</a></li>
-      <li class="sidebar-brand"><a href="/technology.html" onclick="$('#menu-close').click();" >technology</a></li>
-      <li class="sidebar-brand"><a href="/#contacts" onclick="$('#menu-close').click();" >contact</a></li>
-    </ul>
-  </nav>
-
-
-  <header class="intro-header" style="background-image: url('/img/home-bg.jpg')"> <!-- source: http://denis.papathanasiou.org/ -->
-    <div class="container">
-      <div class="row">
-	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-	  <div class="site-heading" >
-	    <h1>Denis Papathanasiou</h1>
-	    <hr class="small">
-	    <h2 class="subheading">All the Pieces Matter</h2>
-	    
-	  </div>
-	</div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-<div class="post-preview">
-  <a href="/posts/2015.12.26.post.html">
-    <h2 class="post-title">Go Concurrency versus C and pthreads</h2>
-    <h3 class="post-subtitle">Apples and Oranges?</h3>
-  </a>
-  <p class="post-meta"><i class="fa fa-calendar"></i> December 26, 2015 | <i class="fa fa-tags"></i> <a href="/programming.html">Programming</a>
-, <a href="/technology.html">Technology</a>
- </p>
-</div>
-
-<div class="post-preview">
-  <a href="/posts/2015.11.27.post.html">
-    <h2 class="post-title">Open Sesame Pi</h2>
-    <h3 class="post-subtitle">DIY Raspberry Pi Door Monitor</h3>
-  </a>
-  <p class="post-meta"><i class="fa fa-calendar"></i> November 27, 2015 | <i class="fa fa-tags"></i> <a href="/hardware.html">Hardware</a>
-, <a href="/programming.html">Programming</a>
-, <a href="/technology.html">Technology</a>
- </p>
-</div>
-
-<div class="post-preview">
-  <a href="/posts/2015.08.30.post.html">
-    <h2 class="post-title">Go version 1.5 on the Raspberry Pi</h2>
-    <h3 class="post-subtitle">An unofficial ARM tarball for the Pi</h3>
-  </a>
-  <p class="post-meta"><i class="fa fa-calendar"></i> August 30, 2015 | <i class="fa fa-tags"></i> <a href="/hardware.html">Hardware</a>
-, <a href="/programming.html">Programming</a>
-, <a href="/technology.html">Technology</a>
- </p>
-</div>
-
-<div class="post-preview">
-  <a href="/posts/2015.07.26.post.html">
-    <h2 class="post-title">DSL processing in Scala</h2>
-    <h3 class="post-subtitle"></h3>
-  </a>
-  <p class="post-meta"><i class="fa fa-calendar"></i> July 26, 2015 | <i class="fa fa-tags"></i> <a href="/programming.html">Programming</a>
-, <a href="/technology.html">Technology</a>
- </p>
-</div>
-
-<div class="post-preview">
-  <a href="/posts/2015.05.30.post.html">
-    <h2 class="post-title">PiScan</h2>
-    <h3 class="post-subtitle">An open-source version of the Amazon Dash Button using a Raspberry Pi</h3>
-  </a>
-  <p class="post-meta"><i class="fa fa-calendar"></i> May 30, 2015 | <i class="fa fa-tags"></i> <a href="/hardware.html">Hardware</a>
-, <a href="/programming.html">Programming</a>
-, <a href="/technology.html">Technology</a>
- </p>
-</div>
-
-<div class="post-preview">
-  <a href="/posts/2014.08.29.post.html">
-    <h2 class="post-title">Rediscovering BerkeleyDB on the Raspberry Pi</h2>
-    <h3 class="post-subtitle"></h3>
-  </a>
-  <p class="post-meta"><i class="fa fa-calendar"></i> August 29, 2014 | <i class="fa fa-tags"></i> <a href="/programming.html">Programming</a>
-, <a href="/technology.html">Technology</a>
- </p>
-</div>
-
-        <hr>
-      </div>
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="row">
-	<a name="contacts"></a>
-	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-	  <ul class="list-inline text-center">
-	    <li>
-	      <a href="mailto:denis@papathanasiou.org">
-		<span class="fa-stack fa-lg">
-		  <i class="fa fa-circle fa-stack-2x"></i>
-		  <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
-		</span>
-	      </a>
-	    </li>
-	    <li>
-	      <a href="https://github.com/dpapathanasiou">
-		<span class="fa-stack fa-lg">
-		  <i class="fa fa-circle fa-stack-2x"></i>
-		  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-		</span>
-	      </a>
-	    </li>
-	  </ul>
-	</div>
-      </div>
-      <div class="row">
-	<a name="license"></a>
-	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-	  <p class="copyright text-muted">
-	    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> &nbsp;
-	    This site's content is licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons (BY-NC-SA 4.0)</a>
+  <body>
+    <main role="main" class="container">
+      <h1 class="mt-5">Denis Papathanasiou</h1>
+      <p class="lead"><a href="https://www.youtube.com/watch?v=SOcWlHENcH4" target="_blank">All the Pieces Matter</a></p>
+      <p>March 2018 &bull; Welcome to the personal web site of Denis Papathanasiou. This page is a temporary placeholder, while I re-evaluate what to do with this site and domain.</p>
+      <p>
+	<blockquote class="blockquote text-right">
+	  <p class="small">
+	    <i>If the mind is wearied by study, or the body worn with sickness,<br />
+	    It is well to lie fallow for a while, in the vacancy of sheer amusement</i>
 	  </p>
-	</div>
+	  <footer class="blockquote-footer"> <cite title="Source Title"><a href="https://en.wikipedia.org/wiki/Martin_Farquhar_Tupper">Martin Farquhar Tupper</a></cite></footer>
+	</blockquote>
+      </p>
+      <p>&nbsp;</p>
+      <p>
+	<ul>
+	  <li>Posts Archive, 2008 &mdash; 2015</li>
+<li><a id="2008.06.23.post.html" href="/archive/2008.06.23.post.pdf">"Plastics may be the reason for human existence"</a></li>
+<li><a id="2008.07.29.post.html" href="/archive/2008.07.29.post.pdf">Object Orientation in C (without the ++)</a></li>
+<li><a id="2008.11.26.post.html" href="/archive/2008.11.26.post.pdf">Simulating Common Lisp Macros in Python: Higher Order Functions</a></li>
+<li><a id="2009.02.16.post.html" href="/archive/2009.02.16.post.pdf">How to Install Debian as a Dual-Boot (with Mac OS X) on the Mac Mini</a></li>
+<li><a id="2009.04.12.post.html" href="/archive/2009.04.12.post.pdf">Customizing UIColor</a></li>
+<li><a id="2009.05.16.post.html" href="/archive/2009.05.16.post.pdf">No Lineage, No Problem</a></li>
+<li><a id="2009.08.13.post.html" href="/archive/2009.08.13.post.pdf">Date and Time Representation in Python</a></li>
+<li><a id="2009.08.19.post.html" href="/archive/2009.08.19.post.pdf">Using reCaptcha with a Python Server</a></li>
+<li><a id="2009.08.25.post.html" href="/archive/2009.08.25.post.pdf">Using Mercurial on Shared Web Hosting</a></li>
+<li><a id="2009.09.20.post.html" href="/archive/2009.09.20.post.pdf">DRM-Free DVD Player & Ripper on Mac OS X</a></li>
+<li><a id="2009.09.25.post.html" href="/archive/2009.09.25.post.pdf">Bill's Guide to the Internet</a></li>
+<li><a id="2010.04.01.post.html" href="/archive/2010.04.01.post.pdf">Papandreou Resigns, Renounces Socialism</a></li>
+<li><a id="2010.04.07.post.html" href="/archive/2010.04.07.post.pdf">Ueshiba Morihei Sensei Hitting Instructor</a></li>
+<li><a id="2010.05.09.post.html" href="/archive/2010.05.09.post.pdf">Fun with LILO and rEFIt: Resolving Boot Errors After an Upgrade</a></li>
+<li><a id="2010.06.16.post.html" href="/archive/2010.06.16.post.pdf">Search Engine Style Query Handling</a></li>
+<li><a id="2010.07.07.post.html" href="/archive/2010.07.07.post.pdf">Soft Ukemi</a></li>
+<li><a id="2010.07.20.post.html" href="/archive/2010.07.20.post.pdf">python setup.py uninstall</a></li>
+<li><a id="2010.08.04.post.html" href="/archive/2010.08.04.post.pdf">Extracting Text & Images from PDF Files</a></li>
+<li><a id="2010.08.24.post.html" href="/archive/2010.08.24.post.pdf">Spam-apalooza: A Survey of Modern Blog Comment Spam</a></li>
+<li><a id="2010.09.04.post.html" href="/archive/2010.09.04.post.pdf">Creating and Sending Emails with File Attachments in Python</a></li>
+<li><a id="2010.09.17.post.html" href="/archive/2010.09.17.post.pdf">Quoted Name Searching in Pyparsing with searchparser.py</a></li>
+<li><a id="2010.12.09.post.html" href="/archive/2010.12.09.post.pdf">Kung Fu Fighting</a></li>
+<li><a id="2011.01.01.post.html" href="/archive/2011.01.01.post.pdf">How to Win a Nobel Prize</a></li>
+<li><a id="2011.04.07.post.html" href="/archive/2011.04.07.post.pdf">A Typical Aikido Class</a></li>
+<li><a id="2011.05.07.post.html" href="/archive/2011.05.07.post.pdf">Repairing the MythTV Database</a></li>
+<li><a id="2011.06.15.post.html" href="/archive/2011.06.15.post.pdf">Illustrated ebooks with epub: using the svg image element</a></li>
+<li><a id="2011.09.22.post.html" href="/archive/2011.09.22.post.pdf">Node.js and MongoDB: A Simple Example</a></li>
+<li><a id="2011.11.11.post.html" href="/archive/2011.11.11.post.pdf">Re-creating Mailinator in Python</a></li>
+<li><a id="2012.01.02.post.html" href="/archive/2012.01.02.post.pdf">Splitting and Extracting MPEG video files with MEncoder</a></li>
+<li><a id="2012.01.05.post.html" href="/archive/2012.01.05.post.pdf">Rediscovering LaTeX</a></li>
+<li><a id="2012.03.04.post.html" href="/archive/2012.03.04.post.pdf">Plato and Diogenes</a></li>
+<li><a id="2012.05.07.post.html" href="/archive/2012.05.07.post.pdf">Using Microsoft's Translator API with Python</a></li>
+<li><a id="2012.06.29.post.html" href="/archive/2012.06.29.post.pdf">Pangæa, courtesy of Doctors Without Borders</a></li>
+<li><a id="2012.07.01.post.html" href="/archive/2012.07.01.post.pdf">Goodbye Java</a></li>
+<li><a id="2012.07.14.post.html" href="/archive/2012.07.14.post.pdf">The right way to use setInterval() and setTimeout() in Javascript</a></li>
+<li><a id="2012.07.20.post.html" href="/archive/2012.07.20.post.pdf">"What is Aikido?"</a></li>
+<li><a id="2012.10.14.post.html" href="/archive/2012.10.14.post.pdf">Go (#golang) and MongoDB using mgo</a></li>
+<li><a id="2012.10.27.post.html" href="/archive/2012.10.27.post.pdf">How to extract just the text from html page articles</a></li>
+<li><a id="2012.12.18.post.html" href="/archive/2012.12.18.post.pdf">Simple Social Media "Share" Buttons</a></li>
+<li><a id="2013.02.10.post.html" href="/archive/2013.02.10.post.pdf">State machines in Go (#golang)</a></li>
+<li><a id="2013.03.31.post.html" href="/archive/2013.03.31.post.pdf">Ubuntu Server + Fluxbox on Mac OSX using VirtualBox</a></li>
+<li><a id="2013.05.16.post.html" href="/archive/2013.05.16.post.pdf">Sadaharu Oh</a></li>
+<li><a id="2013.09.22.post.html" href="/archive/2013.09.22.post.pdf">Found my long-lost Simpsonizeme Photo</a></li>
+<li><a id="2013.10.02.post.html" href="/archive/2013.10.02.post.pdf">Fun with D3 and Web Visualizations</a></li>
+<li><a id="2014.04.21.post.html" href="/archive/2014.04.21.post.pdf">Debian 7 Server + Fluxbox via VirtualBox</a></li>
+<li><a id="2014.05.27.post.html" href="/archive/2014.05.27.post.pdf">Andy Grove's 100 point guide to being a better manager</a></li>
+<li><a id="2014.08.29.post.html" href="/archive/2014.08.29.post.pdf">Rediscovering BerkeleyDB on the Raspberry Pi</a></li>
+<li><a id="2015.05.30.post.html" href="/archive/2015.05.30.post.pdf">PiScan</a></li>
+<li><a id="2015.07.26.post.html" href="/archive/2015.07.26.post.pdf">DSL processing in Scala</a></li>
+<li><a id="2015.08.30.post.html" href="/archive/2015.08.30.post.pdf">Go version 1.5 on the Raspberry Pi</a></li>
+<li><a id="2015.11.27.post.html" href="/archive/2015.11.27.post.pdf">Open Sesame Pi</a></li>
+<li><a id="2015.12.26.post.html" href="/archive/2015.12.26.post.pdf">Go Concurrency versus C and pthreads</a></li>	  
+	</ul>
+      </p>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">
+	  <img src="/img/email_16x11.png" alt="Email" /> <a href="mailto:denis@papathanasiou.org">Contact</a>
+	  <img src="/img/github_16x16.png" alt="GitHub" /> <a href="https://github.com/dpapathanasiou">GitHub</a> &bull; <a href="https://gist.github.com/dpapathanasiou">Gists</a>
+	  <img src="/img/bitcoin_16x16.png" alt="Bitcoin" /> Bitcoin Donate: <a href="bitcoin:14TM4ADKJbaGEi8Qr8dh4KfPBQmjTshkZ2">14TM4ADKJbaGEi8Qr8dh4KfPBQmjTshkZ2</a>
+	</span>
       </div>
-    </div>
-  </footer>
-
-  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="/js/my-blog.min.js"></script>
-  
-</body>
+    </footer>
+  </body>
 </html>
-
-
