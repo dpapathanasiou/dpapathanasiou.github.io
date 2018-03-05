@@ -1,13 +1,16 @@
 # About
 
-This is the personal web site of Denis Papathanasiou http://denis.papathanasiou.org as static templates, now hosted on Github Pages.
+This is the personal web site of Denis Papathanasiou, [denis.papathanasiou.org](http://denis.papathanasiou.org), as static pages and artifacts hosted on [Github Pages](https://pages.github.com/).
 
 # Acknowledgements
 
-The html/css/js is based on [IronSummitMedia's](https://github.com/IronSummitMedia/) [Stylish Portfolio](https://github.com/IronSummitMedia/startbootstrap-stylish-portfolio) and [Clean Blog](IronSummitMedia/startbootstrap-clean-blog) templates.
+The html + css is based on [Bootstrap's](http://getbootstrap.com/) [Sticky footer](http://getbootstrap.com/docs/4.0/examples/sticky-footer/) template example.
 
 # License
 
-The html/css/js components are freely available under the [MIT License](http://opensource.org/licenses/MIT).
-
 Site content is licensed under [Creative Commons (BY-NC-SA 4.0)](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+# Contact
+
+* [Email](mailto:denis@papathanasiou.org)
+* [Bitcoin Donate](bitcoin:14TM4ADKJbaGEi8Qr8dh4KfPBQmjTshkZ2">14TM4ADKJbaGEi8Qr8dh4KfPBQmjTshkZ2) 14TM4ADKJbaGEi8Qr8dh4KfPBQmjTshkZ2
