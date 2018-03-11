@@ -13,6 +13,6 @@ Site content is licensed under [Creative Commons (BY-NC-SA 4.0)](http://creative
 # Contact
 
 * [Email](mailto:denis@papathanasiou.org)
-* [Bitcoin Donate](bitcoin:14TM4ADKJbaGEi8Qr8dh4KfPBQmjTshkZ2">14TM4ADKJbaGEi8Qr8dh4KfPBQmjTshkZ2) `14TM4ADKJbaGEi8Qr8dh4KfPBQmjTshkZ2`
+* <a href="bitcoin:14TM4ADKJbaGEi8Qr8dh4KfPBQmjTshkZ2">Bitcoin Donate</a> `14TM4ADKJbaGEi8Qr8dh4KfPBQmjTshkZ2`
 
   ![QR code](https://bitref.com/qr.php?data=14TM4ADKJbaGEi8Qr8dh4KfPBQmjTshkZ2)
